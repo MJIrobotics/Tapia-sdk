@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent" android:layout_height="fill_parent"
+    android:padding="10dip" android:orientation="vertical"
+    android:background="#FFFFFF">
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal">
+        <ImageButton
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:id="@+id/homeButton"
+            android:background="@drawable/button_home"
+            android:layout_marginLeft="70dp" />
+        <ImageButton
+            android:layout_width="85dp"
+            android:layout_height="90dp"
+            android:id="@+id/localButton"
+            android:background="@drawable/button_tapia"
+            android:layout_marginLeft="185dp"
+            android:layout_marginTop="5dp" />
+
+        <ImageButton
+            android:layout_width="90dp"
+            android:layout_height="100dp"
+            android:id="@+id/sdcardButton"
+            android:background="@drawable/button_sdcard"
+            android:layout_marginLeft="215dp"
+            android:adjustViewBounds="false" />
+    </LinearLayout>
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="3dp"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:id="@+id/textView"
+        android:background="#999999"
+        />
+
+    <ListView android:id="@id/android:list" android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="10dp"
+        android:divider="@android:color/transparent"
+        android:dividerHeight="5dp"
+        tools:listitem="@layout/item_photo" />
+
+
+
+</LinearLayout>

@@ -1,0 +1,134 @@
+<resources>
+    <string name="app_name" translatable="false">tapia</string>
+
+
+    <string name="service_hello0">hello</string>
+    <string name="service_offerHelp0">How can I help you?</string>
+    <string name="service_offerHelp1">What can I do for you?</string>
+
+    <string name="weather_todayStr0">Today, the weather is as follows,</string>
+    <string name="weather_todayStr1">Today the weather in %s is as follows,</string>
+    <string name="weather_tomorrowStr0">Tomorrow, the weather is as follows,</string>
+    <string name="weather_tomorrowStr1">Tomorrow, the weather in %s is as follows,</string>
+
+    <string name="weather_aftertomorrowStr0">The day after tomorrow, the weather is as follows,</string>
+    <string name="weather_aftertomorrowStr1">The day after tomorrow, the weather in %s is as follows,</string>
+    <string name="weather_weekdayStr0">the weather for %s is as follows, </string>
+    <string name="weather_weekdayStr1" formatted="false">the weather in %2$s for %1$s is as follows, </string>
+
+
+    <string name="weather_snow0">%s the weather will be snowy.</string>
+    <string name="weather_snow1">%s the weather will be snowy. please be careful of slippery floors.</string>
+    <string name="weather_hot0">%s the weather will be very hot, make sure to drink plenty of water.</string>
+    <string name="weather_hot1">%s the weather will be very hot. Take precautions against heat stroke</string>
+    <string name="weather_good0">%s the weather is good.</string>
+    <string name="weather_good1">%s the weather is nice.</string>
+    <string name="weather_good2">%s the weather is pleasant.</string>
+    <string name="weather_cloud0">%s the weather will be cloudy.</string>
+    <string name="weather_rain2">%s the weather will be rainy. Take care when going outside.</string>
+    <string name="weather_rain1">%s the weather will be rainy. Do not forget to bring an umbrella.</string>
+    <string name="weather_rain0">%s the weather will be rainy.</string>
+    <string name="weather_cold0">%s the weather will be very cold.</string>
+    <string name="weather_temperature_speech0" formatted="false">There will be a high of %.0f degrees fahrenheit、and a low of %.0f degrees fahrenheit</string>
+    <string name="weather_temperature_display" formatted="false">\tHigh: %.0f °F\n\tLow: %.0f °F</string>
+    <string name="weather_error">Sorry, it seems that I can\'t get the weather right now.</string>
+
+    <string name="alarm_remind0">"You need  %s"</string>
+    <string name="alarm_good_morning0">Good Morning</string>
+    <string name="alarm_good_night0">Good Night</string>
+
+    <string name="password_error0">Password input error, please re-enter.</string>
+    <string name="password_enter0">Please enter your password!</string>
+
+    <string name="photo_ready0">Now get ready to take a photo！</string>
+    <string name="photo_three0">Three</string>
+    <string name="photo_two0">Two</string>
+    <string name="photo_one0">One</string>
+    <string name="photo_cheese0">Say Cheese</string>
+    <string name="photo_ask_save0">Do you want to save this photo?</string>
+    <string name="photo_dont_understand_save0">Sorry,I don\'t understand. Do you want to save this photo?</string>
+    <string name="photo_dont_understand_repeat0">This photo has been saved. Do you want to take one more photo?</string>
+    <string name="photo_ask_repeat0">Do you want to take one more photo?</string>
+    <string name="photo_delete0">The photo has been deleted</string>
+    <string name="photo_error_delete0">An error occurred, I couldn\'t delete the photo</string>
+    <string name="photo_delete_complete0">Ok, I cancelled your request</string>
+    <string name="photo_ask_delete0">Do you really want to delete this photo?</string>
+
+    <string name="general_dont_understand2">I don\'t understand</string>
+    <string name="general_dont_understand0">Sorry I don\'t understand</string>
+    <string name="general_seeyou0">see you</string>
+    <string name="general_save0">OK,it has been saved.</string>
+    <string name="general_dont_understand1">I didn\'t understand. Could you repeat that please.</string>
+
+    <string name="news_ask_next0">Do you want to hear about the next news story?</string>
+    <string name="news_dont_understand_next0">Sorry,I don\'t understand.Do you want to hear about the next news story?</string>
+    <string name="news_ask_news_type0">what sort of news stories do you want to hear about?</string>
+    <string name="news_dont_understand_type0">Sorry, I don\'t understand, what sort of news stories do you want to hear about?</string>
+    <string name="news_title0" formatted="false">In %s news, there is a story with this headline:　%s. Do you want to hear the full news story?</string>
+    <string name="news_dont_understand_detail0">Sorry,I don\'t understand.Do you want to hear the full news story?</string>
+    <string name="news_finish0">No more news stories are available</string>
+
+    <string name="givedate_sentence0">Today is %s</string>
+    <string name="givetime_sentence0" formatted="false">It\'s %s %s now.</string>
+
+    <string name="volumeup_sentence0">The volume has been turn up</string>
+    <string name="volumedown_sentence0">The volume has been turn down</string>
+    <string name="volumemin_reached0">The volume is already at the minimum level.</string>
+    <string name="volumemax_reached0">The volume is already at the maximum level.</string>
+    <string name="volumemax_sentence0">The volume has been set to the maximum level.</string>
+    <string name="volumemin_sentence0">The volume has been set to the minimum level.</string>
+
+    <string name="rotate_sentence0">OK, I\'m going %s</string>
+    <string name="direction_left0">left</string>
+    <string name="direction_right0">right</string>
+    <string name="direction_up0">up</string>
+    <string name="direction_down0">down</string>
+
+    <string name="calendar_sunday">sunday</string>
+    <string name="calendar_monday">monday</string>
+    <string name="calendar_tuesday">tuesday</string>
+    <string name="calendar_wednesday">wednesday</string>
+    <string name="calendar_thursday">thursday</string>
+    <string name="calendar_friday">friday</string>
+    <string name="calendar_saturday">saturday</string>
+
+    <string name="calendar_january">january</string>
+    <string name="calendar_february">february</string>
+    <string name="calendar_march">march</string>
+    <string name="calendar_april">april</string>
+    <string name="calendar_mai">mai</string>
+    <string name="calendar_june">june</string>
+    <string name="calendar_july">july</string>
+    <string name="calendar_august">august</string>
+    <string name="calendar_september">september</string>
+    <string name="calendar_october">october</string>
+    <string name="calendar_november">november</string>
+    <string name="calendar_december">december</string>
+
+    <string name="language_title">Language setting</string>
+
+    <item name="photoItem" type="id" />
+    <item name="newsTypeId" type="id" />
+    <string name="music_local_play">Play</string>
+    <string name="music_local_error_no_file">No music files</string>
+    <string name="music_local_error_no_file0">No music files has been found. Please add some music file</string>
+    <string name="music_local_select0">Please select the song you want me to play.</string>
+    <string name="news_ask_detail">Do you want to know more detail about this ?</string>
+    <string name="news_say_detail">%s</string>
+    <string name="music_start_play0">Start playing</string>
+    <string name="music_player_dont_understand0">Sorry I didn\'t understand can you repeat please.</string>
+    <string name="music_player_dont_understand1">Sorry I didn\'t understand can you repeat please.</string>
+    <string name="music_player_dont_understand2">Sorry I didn\'t understand can you repeat please.</string>
+    <string name="music_player_pause_sentence0">Yes, what do you want me to do ?</string>
+    <string name="register_agreement_agree">Agree</string>
+    <string name="register_agreement_disagree">Disagree</string>
+    <string name="register_agreement_wait">Wait %d seconds please</string>
+    <string name="register_agreement_content">...agreement content...</string>
+    <string name="register_agreement_disagree_senrtence0">If you do not agree to the Terms and Conditions, you can not use Tapia.</string>
+    <string name="register_language_next" >next</string>
+    <string name="register_start_sentence0">Nice to meet you! My name is Tapia . Please call me Tapia . Now , we will setup network settings and the owner registration . I will ask you a few questions, please answer when my eyes are glowing in blue light. So start !</string>
+    <string name="weather_location0">it</string>
+    <string name="bp_dont_understand0">Sorry I didn\'t understand, do you want to start a blood pressure</string>
+    >
+
+</resources>
