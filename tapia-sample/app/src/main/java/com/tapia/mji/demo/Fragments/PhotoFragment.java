@@ -24,9 +24,9 @@ import com.loopj.android.http.RequestParams;
 import com.tapia.mji.demo.Activities.PhotoShowActivity;
 import com.tapia.mji.demo.R;
 import com.tapia.mji.tapialib.Activities.TapiaActivity;
+import com.tapia.mji.tapialib.Exceptions.LanguageNotSupportedException;
 import com.tapia.mji.tapialib.Utils.CameraHelper;
 import com.tapia.mji.tapialib.Utils.TapiaNetwork;
-
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -143,7 +143,11 @@ public class PhotoFragment extends DialogFragment {
 //                    }
 //                }));
 
-                photoShowActivity.ttsProvider.say(photoShowActivity.getString(R.string.photo_ask_delete0));
+                try {
+                    photoShowActivity.ttsProvider.say(photoShowActivity.getString(R.string.photo_ask_delete0));
+                } catch (LanguageNotSupportedException e) {
+                    e.printStackTrace();
+                }
 //                photoShowActivity.sttProvider.setOnRecognitionCompleteListener(new STTProvider.OnRecognitionCompleteListener() {
 //                    @Override
 //                    public void onRecognitionComplete(List<String> results) {

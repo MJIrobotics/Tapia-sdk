@@ -7,15 +7,13 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Environment;
 
-
 import com.tapia.mji.demo.R;
+import com.tapia.mji.tapialib.Activities.TapiaActivity;
 import com.tapia.mji.tapialib.Languages.Language;
 import com.tapia.mji.tapialib.TapiaApp;
-import com.tapia.mji.tapialib.Activities.TapiaActivity;
 import com.tapia.mji.tapialib.Utils.TapiaAnimation;
 import com.tapia.mji.tapialib.Utils.TapiaAudio;
 import com.tapia.mji.tapialib.Utils.TapiaResources;
-
 
 import java.io.File;
 import java.io.IOException;
@@ -33,10 +31,9 @@ public class StartActivity extends TapiaActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        TapiaAudio.setVolume(this,TapiaAudio.getCurrent(), false);
+        TapiaAudio.setVolume(this, TapiaAudio.getCurrent(), false);
         TapiaApp.setCurrentLanguage(Language.LanguageID.JAPANESE);
         startActivity(new Intent(activity,SleepActivity.class));
-
         WallpaperManager myWallpaperManager
                 = WallpaperManager.getInstance(getApplicationContext());
         try {

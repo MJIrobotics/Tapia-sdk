@@ -4,7 +4,6 @@ import android.content.res.Configuration;
 
 import com.tapia.mji.demo.Providers.Local_NLU;
 import com.tapia.mji.demo.R;
-import com.tapia.mji.tapialib.Languages.Language;
 import com.tapia.mji.tapialib.Providers.Hoya;
 import com.tapia.mji.tapialib.TapiaApp;
 import com.tapia.mji.tapialib.Utils.TapiaCalendar;
@@ -28,7 +27,6 @@ public class Japanese extends MyLanguage {
         configuration = new Configuration();
         configuration.locale =jaLocale;
 
-        weatherProvider            = null;
         onlineNLUProvider          = null;
         offlineNLUProvider         = Local_NLU.class;
         onlineSTTProvider          = null;

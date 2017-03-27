@@ -6,14 +6,13 @@ import android.view.SurfaceView;
 import android.view.View;
 import android.widget.ImageView;
 
-import com.tapia.mji.tapialib.Actions.Action;
-
 import com.tapia.mji.demo.R;
+import com.tapia.mji.tapialib.Actions.Action;
+import com.tapia.mji.tapialib.Activities.TapiaActivity;
+import com.tapia.mji.tapialib.Exceptions.LanguageNotSupportedException;
 import com.tapia.mji.tapialib.Providers.Interfaces.TTSProvider;
 import com.tapia.mji.tapialib.TapiaApp;
 import com.tapia.mji.tapialib.Utils.CameraHelper;
-import com.tapia.mji.tapialib.Activities.TapiaActivity;
-
 
 import java.util.ArrayList;
 import java.util.List;
@@ -54,7 +53,11 @@ public class PhotoTakeActivity extends TapiaActivity {
                 findViewById(R.id.no).setVisibility(View.INVISIBLE);
                 if(mode == SAVE_MODE){
                     CameraHelper.saveLastPicture();
-                    ttsProvider.say(getString(R.string.photo_dont_understand_repeat0));
+                    try {
+                        ttsProvider.say(getString(R.string.photo_dont_understand_repeat0));
+                    } catch (LanguageNotSupportedException e) {
+                        e.printStackTrace();
+                    }
                     ttsProvider.setOnSpeechCompleteListener(new TTSProvider.OnSpeechCompleteListener() {
                         @Override
                         public void onSpeechComplete() {
@@ -77,7 +80,11 @@ public class PhotoTakeActivity extends TapiaActivity {
                 findViewById(R.id.yes).setVisibility(View.INVISIBLE);
                 findViewById(R.id.no).setVisibility(View.INVISIBLE);
                 if(mode == SAVE_MODE){
-                    ttsProvider.say(getString(R.string.photo_ask_repeat0));
+                    try {
+                        ttsProvider.say(getString(R.string.photo_ask_repeat0));
+                    } catch (LanguageNotSupportedException e) {
+                        e.printStackTrace();
+                    }
                     ttsProvider.setOnSpeechCompleteListener(new TTSProvider.OnSpeechCompleteListener() {
                         @Override
                         public void onSpeechComplete() {
@@ -97,7 +104,11 @@ public class PhotoTakeActivity extends TapiaActivity {
 
         CameraHelper.startCamera(previewView.getHolder());
         mHandler = new Handler();
-        ttsProvider.say(getString(R.string.photo_ready0));
+        try {
+            ttsProvider.say(getString(R.string.photo_ready0));
+        } catch (LanguageNotSupportedException e) {
+            e.printStackTrace();
+        }
         ttsProvider.setOnSpeechCompleteListener(new TTSProvider.OnSpeechCompleteListener() {
             @Override
             public void onSpeechComplete() {
@@ -111,7 +122,11 @@ public class PhotoTakeActivity extends TapiaActivity {
                 mHandler.postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        ttsProvider.say(getString(R.string.photo_cheese0));
+                        try {
+                            ttsProvider.say(getString(R.string.photo_cheese0));
+                        } catch (LanguageNotSupportedException e) {
+                            e.printStackTrace();
+                        }
                         ttsProvider.setOnSpeechCompleteListener(new TTSProvider.OnSpeechCompleteListener() {
                             @Override
                             public void onSpeechComplete() {
@@ -120,7 +135,11 @@ public class PhotoTakeActivity extends TapiaActivity {
                                 CameraHelper.setOnPictureTokenListener(new CameraHelper.OnPictureTokenListener() {
                                     @Override
                                     public void onPictureToken(byte[] data, String errorMsg) {
-                                        ttsProvider.say(getString(R.string.photo_ask_save0));
+                                        try {
+                                            ttsProvider.say(getString(R.string.photo_ask_save0));
+                                        } catch (LanguageNotSupportedException e) {
+                                            e.printStackTrace();
+                                        }
                                         ttsProvider.setOnSpeechCompleteListener(new TTSProvider.OnSpeechCompleteListener() {
                                             @Override
                                             public void onSpeechComplete() {
@@ -148,7 +167,11 @@ public class PhotoTakeActivity extends TapiaActivity {
         mHandler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                ttsProvider.say(speech);
+                try {
+                    ttsProvider.say(speech);
+                } catch (LanguageNotSupportedException e) {
+                    e.printStackTrace();
+                }
             }
         },delay);
     }

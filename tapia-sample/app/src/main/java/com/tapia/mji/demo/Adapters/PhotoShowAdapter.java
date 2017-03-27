@@ -19,6 +19,7 @@ import android.widget.LinearLayout;
 import com.tapia.mji.demo.Activities.PhotoShowActivity;
 import com.tapia.mji.demo.Fragments.PhotoFragment;
 import com.tapia.mji.demo.R;
+
 import java.io.File;
 import java.util.List;
 
@@ -30,7 +31,7 @@ public class PhotoShowAdapter extends BaseAdapter {
     Activity activity;
     private LayoutInflater inflater;
 
-    public PhotoShowAdapter(Activity activity,List<PhotoShowActivity.PhotoListItem> photoList){
+    public PhotoShowAdapter(Activity activity, List<PhotoShowActivity.PhotoListItem> photoList){
         this.photoList = photoList;
         this.activity = activity;
         inflater = LayoutInflater.from(activity);

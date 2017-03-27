@@ -9,12 +9,10 @@ import android.widget.ImageView;
 import android.widget.ListView;
 
 import com.tapia.mji.demo.Adapters.PhotoShowAdapter;
-
 import com.tapia.mji.demo.R;
 import com.tapia.mji.tapialib.Activities.TapiaActivity;
 import com.tapia.mji.tapialib.TapiaApp;
 import com.tapia.mji.tapialib.Utils.CameraHelper;
-
 
 import java.io.File;
 import java.util.ArrayList;
