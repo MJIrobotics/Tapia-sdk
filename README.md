@@ -19,9 +19,12 @@ SDK for developing on Tapia. <br /><br />
     ```
 
 3.  声のデーターベースファイルも必要である。<br />
+    プロジェクトからtapia-sample/app/micro_h16フォルダをコピーする。<br />
     あなたのTapiaかAndroidデバイスに次のように追加する。<br />
-    そうするとTapiaのText-To-Speechを使える。<br /><br />
+    そうするとTapiaのText-To-Speechを使える。<br />
+    プロジェクトにtapia-sample/app/micro_h16フォルダをコピーする。<br /><br />
     You will also need to add the voice database file<br />
+    You can copy the entire folder from tapia-sample/app/micro_h16<br />
     to the following folder on your Tapia or android device<br />
     to enable Tapia's Text to Speech. 　　
   
