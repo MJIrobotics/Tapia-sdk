@@ -8,6 +8,8 @@ import com.tapia.mji.tapialib.TapiaApp;
 import java.util.ArrayList;
 
 /**
+ * A sample activity to take a photo
+ *
  * Created by Sami on 12-Dec-16.
  */
 
