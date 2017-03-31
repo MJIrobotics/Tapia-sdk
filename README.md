@@ -3,7 +3,10 @@
 SDKはTapiaで開発するためのものです。<br /><br />
 SDK for developing on Tapia. <br />
 
-# Installation
+## Installation
+
+git cloneするか、zipをダウンロードする。そうするとAndroid Studioでtapia-sampleを開く。<br /><br />
+Download or clone the project and then open the sample app (tapia-sample) in Android Studio. 
 
 `gradle.properties`に追加することで<br />
 Tapiaのライブラリーを使える。<br /><br />
