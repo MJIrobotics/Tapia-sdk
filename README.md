@@ -12,7 +12,7 @@ This will add the Tapia library to your project.
 sdk_username=yourUserName
 sdk_password=yourPassword
 ```
-声のデーターベースファイルも必要である。<br />　　
+声のデーターベースファイルも必要である。<br />
 あなたのTapiaかAndroidデバイスに次のように追加する。<br />
 そうするとTapiaのText-To-Speechを使える。<br />
 You will also need to add the voice database file<br />
