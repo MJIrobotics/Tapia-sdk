@@ -16,21 +16,8 @@ SDK for developing on Tapia. <br /><br />
     ```
     sdk_username=yourUserName
     sdk_password=yourPassword
-    ```
-
-3.  声のデーターベースファイルも必要である。<br />
-    プロジェクトからtapia-sample/app/micro_h16フォルダをコピーする。<br />
-    あなたのTapiaかAndroidデバイスに次のように追加する。<br />
-    そうするとTapiaのText-To-Speechを使える。<br /><br />
-    You will also need to add the voice database file<br />
-    You can copy the entire folder from tapia-sample/app/micro_h16<br />
-    to the following folder on your Tapia or android device<br />
-    to enable Tapia's Text to Speech. 　　
-  
-    ```
-    /USB storage/micro_h16/tts_single_db_XXXXX.vtdb
-    ```
+    ````
     
-4.  アカウントをまだ作成していない場合は、以下のurlで作成する。<br /><br />
+3.  アカウントをまだ作成していない場合は、以下のurlで作成する。<br /><br />
     If you don't have an account yet, please create one at :<br />
     https://tos.mjirobotics.co.jp/
