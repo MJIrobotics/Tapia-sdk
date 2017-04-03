@@ -31,11 +31,7 @@ public class StartActivity extends TapiaActivity {
         super.onCreate(savedInstanceState);
         TapiaAudio.setVolume(this, TapiaAudio.getCurrent(), false);
         TapiaApp.setCurrentLanguage(Language.LanguageID.JAPANESE);
-        Locale locale = Locale.JAPAN;
-        Locale.setDefault(locale);
-        Configuration config = getBaseContext().getResources().getConfiguration();
-        config.locale = locale;
-        getBaseContext().getResources().updateConfiguration(config, getBaseContext().getResources().getDisplayMetrics());
+
         startActivity(new Intent(activity,SleepActivity.class));
         WallpaperManager myWallpaperManager
                 = WallpaperManager.getInstance(getApplicationContext());

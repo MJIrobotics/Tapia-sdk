@@ -24,7 +24,7 @@ public class Japanese extends MyLanguage {
     public Japanese(){
         Locale jaLocale = new Locale("ja");
         Locale.setDefault(jaLocale);
-        configuration = new Configuration();
+        configuration = TapiaApp.appContext.getResources().getConfiguration();
         configuration.locale =jaLocale;
 
         onlineNLUProvider          = null;
