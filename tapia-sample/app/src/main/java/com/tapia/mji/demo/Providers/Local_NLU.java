@@ -3,18 +3,20 @@ package com.tapia.mji.demo.Providers;
 import android.content.Context;
 
 import com.tapia.mji.demo.Actions.MyAction;
+import com.tapia.mji.demo.Actions.Rotate;
+import com.tapia.mji.demo.Languages.Japanese;
+import com.tapia.mji.demo.R;
 import com.tapia.mji.tapialib.Actions.Action;
 import com.tapia.mji.tapialib.Languages.Language;
 import com.tapia.mji.tapialib.Providers.Interfaces.OfflineNLUProvider;
 import com.tapia.mji.tapialib.Utils.LevenshteinDistance;
-
+import com.tapia.mji.tapialib.Utils.TapiaRobot;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 import static com.tapia.mji.demo.Actions.MyAction.MyActionType.GIVE_TIME;
-import static com.tapia.mji.demo.Actions.MyAction.MyActionType.ROTATE;
 
 /**
  * Created by Sami on 07-Jul-16.
@@ -28,10 +30,9 @@ public class Local_NLU implements OfflineNLUProvider {
     static Local_NLU myInstance = null;
     static public Local_NLU getInstance(Context context, Language.LanguageID language){
         if(myInstance == null || !language.equals(myInstance.language)){
-            return new Local_NLU(context,language);
+            myInstance = new Local_NLU(context,language);
         }
-        else
-            return myInstance;
+        return myInstance;
     }
 
     class Keyword{
@@ -51,17 +52,16 @@ public class Local_NLU implements OfflineNLUProvider {
 //        myKeywords.add(new Keyword(new String[]{"keyword", "setting"}, Action.ActionType.));
         if(language == Language.LanguageID.ENGLISH_US || language == Language.LanguageID.ENGLISH_UK) {
             myKeywords.add(new Keyword(new String[]{"what", "time"}, GIVE_TIME));
+            myKeywords.add(new Keyword(new String[]{"rotate", "degree"}, MyAction.MyActionType.ROTATE));
+
 
         }
-        else if (language == Language.LanguageID.FRENCH){
-//            myKeywords.add(new Keyword(new String[]{"oui"}, Action.ActionType.POSITIVE_ANSWER));
-//            myKeywords.add(new Keyword(new String[]{"au revoir"}, Action.ActionType.BYE));
-        }
         else if(language == Language.LanguageID.JAPANESE){
-//            myKeywords.add(new Keyword(new String[]{"ストップ"}, Action.ActionType.STOP));
-//            myKeywords.add(new Keyword(new String[]{"大きく"}, Action.ActionType.VOLUME_UP));
-//            myKeywords.add(new Keyword(new String[]{"はい"}, Action.ActionType.POSITIVE_ANSWER));
-//            myKeywords.add(new Keyword(new String[]{"いいえ"}, Action.ActionType.NEGATIVE_ANSWER));
+            myKeywords.add(new Keyword(new String[]{"何時"}, MyAction.MyActionType.GIVE_TIME));
+            myKeywords.add(new Keyword(new String[]{"何曜日"}, MyAction.MyActionType.GIVE_DATE));
+            myKeywords.add(new Keyword(new String[]{"何日"}, MyAction.MyActionType.GIVE_DATE));
+            myKeywords.add(new Keyword(new String[]{"回転", "度"}, MyAction.MyActionType.ROTATE));
+
         }
     }
 
@@ -84,33 +84,37 @@ public class Local_NLU implements OfflineNLUProvider {
                 if(keywordGroup != null){
                     switch ((MyAction.MyActionType)keywordGroup.actionType) {
                         case ROTATE:
-//                            Rotate rotate = (Rotate) Action.queryAction(actionToListen, Action.ActionType.ROTATE);
-//                            if(rotate != null) {
-//                                for (String sentence : sentences) {
-//                                    if (sentence.contains("left"))
-//                                        rotate.setOrientation(RobotService.ORIENTATION_LEFT);
-//                                    else if(sentence.contains("right"))
-//                                        rotate.setOrientation(RobotService.ORIENTATION_RIGHT);
-//                                    else if(sentence.contains("up"))
-//                                        rotate.setOrientation(RobotService.ORIENTATION_UP);
-//                                    else if(sentence.contains("down"))
-//                                        rotate.setOrientation(RobotService.ORIENTATION_DOWN);
-//                                }
-//                                int degrees = -1;
-//                                for (String sentence : sentences) {
-//                                    try {
-//                                        degrees = Integer.parseInt(sentence.replaceAll("[\\D]", ""));
-//                                        rotate.setDegree(degrees);
-//                                        break;
-//                                    } catch (Exception e) {
-//                                        degrees = -1;
-//                                    }
-//                                }
-//                                if (degrees != -1)
-//                                    resultAction = rotate;
-//                                else
-//                                    resultAction = null;
-//                            }
+                            Rotate rotate = (Rotate) Action.queryAction(actionToListen, MyAction.MyActionType.ROTATE);
+                            if(rotate != null) {
+                                for (String sentence : sentences) {
+                                    if (sentence.contains(context.getString(R.string.direction_left0)))
+                                        rotate.setOrientation(TapiaRobot.RotateOrientation.LEFT);
+                                    else if(sentence.contains(context.getString(R.string.direction_right0)))
+                                        rotate.setOrientation(TapiaRobot.RotateOrientation.RIGHT);
+                                    else if(sentence.contains(context.getString(R.string.direction_up0)))
+                                        rotate.setOrientation(TapiaRobot.RotateOrientation.UP);
+                                    else if(sentence.contains(context.getString(R.string.direction_down0)))
+                                        rotate.setOrientation(TapiaRobot.RotateOrientation.DOWN);
+                                }
+                                int degrees = -1;
+                                for (String sentence : sentences) {
+                                    try {
+                                        if(language.equals(Language.LanguageID.JAPANESE)){
+                                            sentence = Japanese.convertFullWidthNumberToHalfWidthNumber(sentence);
+                                        }
+
+                                        degrees = Integer.parseInt(sentence.replaceAll("[\\D]", ""));
+                                        rotate.setDegree(degrees);
+                                        break;
+                                    } catch (Exception e) {
+                                        degrees = -1;
+                                    }
+                                }
+                                if (degrees != -1)
+                                    resultAction = rotate;
+                                else
+                                    resultAction = null;
+                            }
                             break;
                         default:
                             resultAction = Action.queryAction(actionToListen,keywordGroup.actionType);

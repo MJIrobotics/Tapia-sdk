@@ -1,6 +1,10 @@
 package com.tapia.mji.demo.Actions;
 
+import com.tapia.mji.tapialib.Utils.TapiaRobot;
+
 /**
+ * MyAction extension for rotating tapia.
+ *
  * Created by Sami on 12-Jul-16.
  */
 public class Rotate extends MyAction {
@@ -12,28 +16,53 @@ public class Rotate extends MyAction {
         type = MyActionType.ROTATE;
     }
 
+    /**
+     * Set the degree of rotation
+     *
+     * @param degree the degree of rotation
+     */
     public void setDegree(int degree){
         onRotateListener.degree = degree;
     }
 
+
+    /**
+     * Accessor for the degree of rotation
+     *
+     * @return the degree of rotation
+     */
     public int getDegree() {
         return onRotateListener.degree;
     }
 
-    public void setOrientation(int orientation){
+    /**
+     * Set the orientation of the rotation
+     *
+     * @param orientation the orientation of the rotation
+     */
+    public void setOrientation(TapiaRobot.RotateOrientation orientation){
         onRotateListener.orientation = orientation;
     }
 
-    public int getOrientation() {
+    /**
+     * Accessor for orientation
+     *
+     * @return the orientation of the rotation
+     */
+    public TapiaRobot.RotateOrientation getOrientation() {
         return onRotateListener.orientation;
     }
+
+    /**
+     * OnActionListener extension for Rotate action.
+     */
     static public abstract class OnRotateListener implements MyAction.OnActionListener {
         int degree;
-        int orientation;
+        TapiaRobot.RotateOrientation orientation;
         @Override
         public void onAction() {
             onRotate(orientation,degree);
         }
-        abstract public void onRotate(int orientation,int degree);
+        abstract public void onRotate(TapiaRobot.RotateOrientation orientation, int degree);
     }
 }

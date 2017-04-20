@@ -27,7 +27,7 @@ public abstract class MyLanguage extends Language {
     public GeocodeProvider getGeocodeProvider() {
         if(geocodeProvider != null){
             try {
-                return (GeocodeProvider) geocodeProvider.getMethod("getInstance",Context.class,LanguageID.class).invoke(null, TapiaApp.appContext,getID());
+                return (GeocodeProvider) geocodeProvider.getMethod("getInstance",Context.class,LanguageID.class).invoke(null, TapiaApp.getAppContext(),getID());
             } catch (Exception e) {
                 e.printStackTrace();
                 return null;

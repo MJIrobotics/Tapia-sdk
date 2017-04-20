@@ -8,12 +8,12 @@ import com.tapia.mji.tapialib.TapiaApp;
 import java.util.ArrayList;
 
 /**
- * A sample activity to take a photo
- *
  * Created by Sami on 12-Dec-16.
  */
 
 public class PhotoMenuActivity extends MenuActivity {
+    static final int TALK = 3;
+    static final int SLEEP = 2;
     static final int TAKE_PHOTO = 0;
     static final int SHOW_PHOTO = 1;
 
@@ -21,10 +21,13 @@ public class PhotoMenuActivity extends MenuActivity {
     @Override
     public ArrayList<MenuItem> setMenuList() {
         ArrayList<MenuItem> menuItems = new ArrayList<>();
+        menuItems.add(new MenuItem(TALK, "TALK"));
+        menuItems.add(new MenuItem(SLEEP, "Sleep"));
         //add item with an id to easily find it.
         menuItems.add(new MenuItem(TAKE_PHOTO, "take \n photo"));
         //Can also adjust the size of the text to make it fit in the bubble
         menuItems.add(new MenuItem(SHOW_PHOTO, "show my photo", 16));
+
         return menuItems;
     }
 
@@ -32,10 +35,16 @@ public class PhotoMenuActivity extends MenuActivity {
     public void onItemClick(MenuItem item) {
         switch (item.id){
             case TAKE_PHOTO:
-                startActivity(new Intent(TapiaApp.appContext,PhotoTakeActivity.class));
+                startActivity(new Intent(TapiaApp.getAppContext(),PhotoTakeActivity.class));
                 break;
             case SHOW_PHOTO:
-                startActivity(new Intent(TapiaApp.appContext,PhotoShowActivity.class));
+                startActivity(new Intent(TapiaApp.getAppContext(),PhotoShowActivity.class));
+                break;
+            case TALK:
+                startActivity(new Intent(TapiaApp.getAppContext(),TalkActivity.class));
+                break;
+            case SLEEP:
+                finish();
                 break;
         }
     }
