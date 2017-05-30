@@ -18,10 +18,27 @@ SDK for developing on Tapia. <br /><br />
     sdk_password=yourPassword
     ````
     sdk_username及びskd_passwordは TAPIA Online SDKにログイン後に取得できます。<br/>
-
-
     
+
 3.  アカウントをまだ作成していない場合は、TAPIA　Online SDKで取得してください。<br/>
     TAPIA Online SDKのurlは下記のとおりです。<br />
     If you don't have an account yet, please create one at :<br />
     https://tos.mjirobotics.co.jp/
+    
+4.  アカウントを取得したら、ウェブサイトからライセンスキーを確認してください。<br />
+    プロジェクトのAndroidManifest.xmlファイルに下のように追記します。<br /> <br />
+    Once you have an account, please find your license key from the the website<br />
+    and include it in your project's AndroidManifest.xml file as follows:
+
+    ```
+    <application
+        ...
+        <meta-data
+                android:name="license_key"
+                android:value="[yourLicenseKey]" />
+        ...
+    </application>
+
+    ````
+
+    
