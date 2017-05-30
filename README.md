@@ -35,7 +35,7 @@ SDK for developing on Tapia. <br /><br />
         ...
         <meta-data
                 android:name="license_key"
-                android:value="[yourLicenseKey]" />
+                android:value="yourLicenseKey" />
         ...
     </application>
 
