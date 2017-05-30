@@ -26,7 +26,7 @@ SDK for developing on Tapia. <br /><br />
     https://tos.mjirobotics.co.jp/
     
 4.  アカウントを取得したら、ウェブサイトからライセンスキーを確認してください。<br />
-    プロジェクトのAndroidManifest.xmlファイルに下のように追記します。<br /> <br />
+    プロジェクトのAndroidManifest.xmlファイルに下のように追記します。<br /> <br />
     Once you have an account, please find your license key from the the website<br />
     and include it in your project's AndroidManifest.xml file as follows:
 
