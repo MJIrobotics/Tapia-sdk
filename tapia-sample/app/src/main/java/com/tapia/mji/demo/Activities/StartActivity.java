@@ -29,7 +29,9 @@ public class StartActivity extends TapiaActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         TapiaAudio.setVolume(this, TapiaAudio.getCurrent(), false);
-        TapiaApp.setCurrentLanguage(Language.LanguageID.JAPANESE);
+      //  TapiaApp.setCurrentLanguage(Language.LanguageID.JAPANESE);
+        TapiaApp.setCurrentLanguage(Language.LanguageID.ENGLISH_US);
+
         TapiaApp.ENABLE_ROBOT_FEATURE = true;
         startActivity(new Intent(activity,SleepActivity.class));
         WallpaperManager myWallpaperManager

@@ -16,18 +16,17 @@ public class PhotoMenuActivity extends MenuActivity {
     static final int SLEEP = 2;
     static final int TAKE_PHOTO = 0;
     static final int SHOW_PHOTO = 1;
-
+    static final int KeyBoard = 4;
 
     @Override
     public ArrayList<MenuItem> setMenuList() {
         ArrayList<MenuItem> menuItems = new ArrayList<>();
         menuItems.add(new MenuItem(TALK, "TALK"));
-        menuItems.add(new MenuItem(SLEEP, "Sleep"));
-        //add item with an id to easily find it.
+        menuItems.add(new MenuItem(SLEEP, "Sleep"));//add item with an id to easily find it.
         menuItems.add(new MenuItem(TAKE_PHOTO, "take \n photo"));
         //Can also adjust the size of the text to make it fit in the bubble
         menuItems.add(new MenuItem(SHOW_PHOTO, "show my photo", 16));
-
+        menuItems.add(new MenuItem(KeyBoard, "KeyBoard", 16));//<<追加します。
         return menuItems;
     }
 
@@ -46,6 +45,10 @@ public class PhotoMenuActivity extends MenuActivity {
             case SLEEP:
                 finish();
                 break;
+            case KeyBoard:
+                startActivity(new Intent(TapiaApp.getAppContext(),TestJapaneseKeyBoard.class));//<<追加します。
+                break;
+
         }
     }
 

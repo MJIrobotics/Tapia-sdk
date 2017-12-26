@@ -12,6 +12,7 @@ import com.tapia.mji.demo.R;
 import com.tapia.mji.tapialib.Actions.Action;
 import com.tapia.mji.tapialib.Activities.TapiaActivity;
 import com.tapia.mji.tapialib.Exceptions.LanguageNotSupportedException;
+import com.tapia.mji.tapialib.Languages.Language;
 import com.tapia.mji.tapialib.Providers.Interfaces.NLUProvider;
 import com.tapia.mji.tapialib.Providers.Interfaces.STTProvider;
 import com.tapia.mji.tapialib.Providers.Interfaces.TTSProvider;
@@ -227,6 +228,8 @@ public class TalkActivity extends TapiaActivity {
         else {
             startString = TapiaResources.getRandStr(this,"service_offerHelp",1);
             try {
+
+                ttsProvider.sayIn("hello", Language.LanguageID.ENGLISH_US);
                 ttsProvider.ask(startString,sttProvider);
             } catch (LanguageNotSupportedException e) {
                 e.printStackTrace();

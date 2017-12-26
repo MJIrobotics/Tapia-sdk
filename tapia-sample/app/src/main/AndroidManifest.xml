@@ -58,10 +58,11 @@
         <activity android:configChanges="locale" android:screenOrientation="landscape" android:name=".Activities.PhotoShowActivity" />
         <activity android:configChanges="locale" android:screenOrientation="landscape" android:name=".Activities.SleepActivity" />
         <activity android:configChanges="locale" android:screenOrientation="landscape" android:name=".Activities.PhotoMenuActivity" />
-
+        <activity android:configChanges="locale" android:screenOrientation="landscape" android:name=".Activities.TalkActivity" />
+        <activity android:configChanges="locale" android:screenOrientation="landscape" android:name=".Activities.TestJapaneseKeyBoard" />
         <meta-data
             android:name="license_key"
-            android:value="U2FsdGVkX1+4AobQcFPAeRtEHk2eheqO+DlPcJ4lE5drWJrnnIqTV/GLojlrhP1+jMCad0O8Z2ZfrQIE0f+kcQ==" />
+            android:value="your_license_key" />
     </application>
 
 </manifest>
