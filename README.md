@@ -43,6 +43,9 @@ SDK for developing on Tapia. <br /><br />
 
 ## Release Note
 
+ver.1.0.10.2<br />
+機能追加<br />
+・ タピアの音声認識の速度を向上しました。
 
 ver.1.0.9<br />
 機能追加<br />
