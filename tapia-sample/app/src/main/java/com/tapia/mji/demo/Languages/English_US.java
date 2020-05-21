@@ -4,6 +4,7 @@ import android.content.res.Configuration;
 
 import com.tapia.mji.demo.Providers.Local_NLU;
 import com.tapia.mji.demo.R;
+import com.tapia.mji.tapialib.Providers.DosmonoOnlineSTTProvider;
 import com.tapia.mji.tapialib.Providers.Fuetrek;
 import com.tapia.mji.tapialib.Providers.Hoya;
 import com.tapia.mji.tapialib.TapiaApp;
@@ -29,7 +30,7 @@ public class English_US extends MyLanguage {
 
         onlineNLUProvider          = null;
         offlineNLUProvider         = Local_NLU.class;
-        onlineSTTProvider          = Fuetrek.class;
+        onlineSTTProvider          = DosmonoOnlineSTTProvider.class;
         offLineSTTProvider         = null;
         ttsProvider                = Hoya.class;
         geocodeProvider            = null;
