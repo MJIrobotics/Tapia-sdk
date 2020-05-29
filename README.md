@@ -40,8 +40,85 @@ SDK for developing on Tapia. <br /><br />
     </application>
 
     ````
+ 
+5.  既存コードからバージョンアップする場合は、以下追加してください<br />
+今回のパーションアップでは、バージョンの数字だけでなく①～⑤を追加修正する必要があります。<br />
+①tapia-sample/app/build.gradle を追加・修正します
+    ```
+    + compileOptions {
+    +     sourceCompatibility 1.8
+    +      targetCompatibility 1.8
+    + }
+    + packagingOptions {
+    +     exclude 'META-INF/DEPENDENCIES'
+    +     exclude 'META-INF/INDEX.LIST'
+    + }
+    ```
+
+    ```
+    dependencies {
+    -  compile'com.tapia.mji:tapialib:1.0.10.2'
+    +    compile 'com.tapia.mji:tapialib:2.0.1'
+    } 
+    ``` 
+
+    ②tapia-sample/app/src/main/java/com/tapia/mji/demo/Languages/English_US.javaを追加修正します
+
+    ``` 
+    + import com.tapia.mji.tapialib.Providers.DosmonoOnlineSTTProvider;
+    ``` 
+    ``` 
+    public English_US(){
+
+       -  onlineSTTProvider          = Fuetrek.class;
+       +  onlineSTTProvider          = DosmonoOnlineSTTProvider.class;
+    ``` 
+
+    ③tapia-sample/app/src/main/java/com/tapia/mji/demo/Languages/Japanese.java を追加修正します
+     ``` 
+    + import com.tapia.mji.tapialib.Providers.DosmonoOnlineSTTProvider;
+    ``` 
+    ``` 
+    public English_US(){
+
+       -  onlineSTTProvider          = Fuetrek.class;
+       +  onlineSTTProvider          = DosmonoOnlineSTTProvider.class;
+    ``` 
+    ④tapia-sample/build.gradle を追加修正します
+    ``` 
+    buildscript {
+        repositories {
+        　     jcenter()
+            +  google()
+        }
+        dependencies {
+            - 　classpath 'com.android.tools.build:gradle:2.3.3'
+            +  classpath 'com.android.tools.build:gradle:3.6.3'
+    ``` 
+    ```
+        allprojects {
+            repositories {
+                jcenter()
+            +   google()
+    ```
+    ```
+            +    maven { url 'https://csspeechstorage.blob.core.windows.net/maven/' }
+            +    maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
+            +    maven { url 'http://maven.aliyun.com/nexus/content/repositories/jcenter' }
+                 maven {
+    ```
+    ⑤tapia-sample/gradle/wrapper/gradle-wrapper.properties を追加修正します
+    ```
+    -　distributionUrl=https\://services.gradle.org/distributions/gradle-3.3-all.zip
+    +　distributionUrl=https\://services.gradle.org/distributions/gradle-5.6.4-all.zip
+    ```
+<br/>
 
 ## Release Note
+
+ver.2.0.1<br />
+機能追加<br />
+・ タピアの音声認識を変更しました。
 
 ver.1.0.10.2<br />
 機能追加<br />
