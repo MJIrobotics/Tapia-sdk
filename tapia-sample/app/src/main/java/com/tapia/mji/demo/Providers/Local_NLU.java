@@ -12,7 +12,7 @@ import com.tapia.mji.tapialib.Actions.Action;
 import com.tapia.mji.tapialib.Languages.Language;
 import com.tapia.mji.tapialib.Providers.Interfaces.OfflineNLUProvider;
 import com.tapia.mji.tapialib.Utils.LevenshteinDistance;
-import com.tapia.mji.tapialib.Utils.TapiaRobot;
+import com.tapia.mji.tapialib.Utils.TapiaRobotManager;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -88,13 +88,13 @@ public class Local_NLU implements OfflineNLUProvider {
                             if(rotate != null) {
                                 for (String sentence : sentences) {
                                     if (sentence.contains(context.getString(R.string.direction_left0)))
-                                        rotate.setOrientation(TapiaRobot.RotateOrientation.LEFT);
+                                        rotate.setOrientation(TapiaRobotManager.Direction.LEFT);
                                     else if(sentence.contains(context.getString(R.string.direction_right0)))
-                                        rotate.setOrientation(TapiaRobot.RotateOrientation.RIGHT);
+                                        rotate.setOrientation(TapiaRobotManager.Direction.RIGHT);
                                     else if(sentence.contains(context.getString(R.string.direction_up0)))
-                                        rotate.setOrientation(TapiaRobot.RotateOrientation.UP);
+                                        rotate.setOrientation(TapiaRobotManager.Direction.UP);
                                     else if(sentence.contains(context.getString(R.string.direction_down0)))
-                                        rotate.setOrientation(TapiaRobot.RotateOrientation.DOWN);
+                                        rotate.setOrientation(TapiaRobotManager.Direction.DOWN);
                                 }
                                 int degrees = -1;
                                 for (String sentence : sentences) {
