@@ -1,5 +1,7 @@
 package com.tapia.mji.demo.Providers;
 
+import static com.tapia.mji.demo.Actions.MyAction.MyActionType.GIVE_TIME;
+
 import android.content.Context;
 
 import com.tapia.mji.demo.Actions.MyAction;
@@ -15,8 +17,6 @@ import com.tapia.mji.tapialib.Utils.TapiaRobot;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-
-import static com.tapia.mji.demo.Actions.MyAction.MyActionType.GIVE_TIME;
 
 /**
  * Created by Sami on 07-Jul-16.
@@ -60,7 +60,7 @@ public class Local_NLU implements OfflineNLUProvider {
             myKeywords.add(new Keyword(new String[]{"何時"}, MyAction.MyActionType.GIVE_TIME));
             myKeywords.add(new Keyword(new String[]{"何曜日"}, MyAction.MyActionType.GIVE_DATE));
             myKeywords.add(new Keyword(new String[]{"何日"}, MyAction.MyActionType.GIVE_DATE));
-            myKeywords.add(new Keyword(new String[]{"回転", "度"}, MyAction.MyActionType.ROTATE));
+            myKeywords.add(new Keyword(new String[]{"回転", "°"}, MyAction.MyActionType.ROTATE));
 
         }
     }
