@@ -34,21 +34,21 @@ public class PhotoMenuActivity extends MenuActivity {
 
     @Override
     public void onItemClick(MenuItem item) {
-        switch (item.id){
+        switch (item.id) {
             case TAKE_PHOTO:
-                startActivity(new Intent(TapiaApp.getAppContext(),PhotoTakeActivity.class));
+                startActivity(new Intent(TapiaApp.getAppContext(), PhotoTakeActivity.class));
                 break;
             case SHOW_PHOTO:
-                startActivity(new Intent(TapiaApp.getAppContext(),PhotoShowActivity.class));
+                startActivity(new Intent(TapiaApp.getAppContext(), PhotoShowActivity.class));
                 break;
             case TALK:
-                startActivity(new Intent(TapiaApp.getAppContext(),TalkActivity.class));
+                startActivity(new Intent(TapiaApp.getAppContext(), TalkActivity.class));
                 break;
             case SLEEP:
                 finish();
                 break;
             case KeyBoard:
-                startActivity(new Intent(TapiaApp.getAppContext(),TestJapaneseKeyBoard.class));//<<追加します。
+                startActivity(new Intent(TapiaApp.getAppContext(), TestJapaneseKeyBoard.class));//<<追加します。
                 break;
             case ROTATION:
                 startActivity(new Intent(TapiaApp.getAppContext(), RotationActivity.class));

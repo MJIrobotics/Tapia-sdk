@@ -28,17 +28,16 @@ public class PhotoTakeActivity extends TapiaActivity {
     List<Action> actionListRepeat;
 
 
-
     static final int SAVE_MODE = 0;
     static final int REPEAT_MODE = 1;
     int mode = -1;
 
     @Override
-    public void onCreate(final Bundle savedInstanceState){
+    public void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_takephoto);
 
-        ttsProvider         = TapiaApp.currentLanguage.getTTSProvider();
+        ttsProvider = TapiaApp.currentLanguage.getTTSProvider();
 
         countdownView = (ImageView) findViewById(R.id.countdownView);
         previewView = (SurfaceView) findViewById(R.id.previewView);
@@ -51,7 +50,7 @@ public class PhotoTakeActivity extends TapiaActivity {
             public void onClick(View v) {
                 findViewById(R.id.yes).setVisibility(View.INVISIBLE);
                 findViewById(R.id.no).setVisibility(View.INVISIBLE);
-                if(mode == SAVE_MODE){
+                if (mode == SAVE_MODE) {
                     CameraHelper.saveLastPicture();
                     try {
                         ttsProvider.say(getString(R.string.photo_dont_understand_repeat0));
@@ -67,8 +66,7 @@ public class PhotoTakeActivity extends TapiaActivity {
                             ttsProvider.setOnSpeechCompleteListener(null);
                         }
                     });
-                }
-                else if (mode == REPEAT_MODE){
+                } else if (mode == REPEAT_MODE) {
                     recreate();
                 }
             }
@@ -79,7 +77,7 @@ public class PhotoTakeActivity extends TapiaActivity {
             public void onClick(View v) {
                 findViewById(R.id.yes).setVisibility(View.INVISIBLE);
                 findViewById(R.id.no).setVisibility(View.INVISIBLE);
-                if(mode == SAVE_MODE){
+                if (mode == SAVE_MODE) {
                     try {
                         ttsProvider.say(getString(R.string.photo_ask_repeat0));
                     } catch (LanguageNotSupportedException e) {
@@ -93,13 +91,11 @@ public class PhotoTakeActivity extends TapiaActivity {
                             findViewById(R.id.no).setVisibility(View.VISIBLE);
                         }
                     });
-                }
-                else if (mode == REPEAT_MODE){
+                } else if (mode == REPEAT_MODE) {
                     finish();
                 }
             }
         });
-
 
 
         CameraHelper.startCamera(previewView.getHolder());
@@ -113,11 +109,11 @@ public class PhotoTakeActivity extends TapiaActivity {
             @Override
             public void onSpeechComplete() {
                 sayDelayed(getString(R.string.photo_three0), 1000);
-                changedDrawableDalayed(R.drawable.take3,1000);
-                sayDelayed(getString(R.string.photo_two0),   2000);
-                changedDrawableDalayed(R.drawable.take2,2000);
-                sayDelayed(getString(R.string.photo_one0),   3000);
-                changedDrawableDalayed(R.drawable.take1,3000);
+                changedDrawableDalayed(R.drawable.take3, 1000);
+                sayDelayed(getString(R.string.photo_two0), 2000);
+                changedDrawableDalayed(R.drawable.take2, 2000);
+                sayDelayed(getString(R.string.photo_one0), 3000);
+                changedDrawableDalayed(R.drawable.take1, 3000);
 
                 mHandler.postDelayed(new Runnable() {
                     @Override
@@ -163,7 +159,7 @@ public class PhotoTakeActivity extends TapiaActivity {
     }
 
 
-    void sayDelayed(final String speech, int delay){
+    void sayDelayed(final String speech, int delay) {
         mHandler.postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -173,16 +169,16 @@ public class PhotoTakeActivity extends TapiaActivity {
                     e.printStackTrace();
                 }
             }
-        },delay);
+        }, delay);
     }
 
-    void changedDrawableDalayed(final int drawableID, int delay){
+    void changedDrawableDalayed(final int drawableID, int delay) {
         mHandler.postDelayed(new Runnable() {
             @Override
             public void run() {
                 countdownView.setImageResource(drawableID);
                 countdownView.invalidate();
             }
-        },delay);
+        }, delay);
     }
 }

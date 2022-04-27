@@ -9,26 +9,30 @@ import java.util.Date;
  */
 public class GiveDate extends MyAction {
     public OnGiveDateListener onGiveDateListener;
-    public GiveDate(OnGiveDateListener giveDateListener){
+
+    public GiveDate(OnGiveDateListener giveDateListener) {
         super(giveDateListener);
         onGiveDateListener = giveDateListener;
         type = MyActionType.GIVE_DATE;
     }
 
-    public Date getMood(){
+    public Date getMood() {
         return onGiveDateListener.date;
     }
-    public void setDate(Date date){
+
+    public void setDate(Date date) {
         onGiveDateListener.date = date;
     }
 
 
     static public abstract class OnGiveDateListener implements Action.OnActionListener {
         protected Date date;
+
         @Override
         public void onAction() {
             onGiveDate(date);
         }
+
         abstract public void onGiveDate(Date date);
     }
 }

@@ -24,7 +24,6 @@ public class StartActivity extends TapiaActivity {
     SharedPreferences preferences;
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

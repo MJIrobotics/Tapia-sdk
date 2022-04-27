@@ -1,111 +1,111 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-android:layout_width="1150dp"
-android:layout_height="720dp"
-android:id="@+id/fm"
-android:background="#FFFFFF">
+    android:id="@+id/fm"
+    android:layout_width="1150dp"
+    android:layout_height="720dp"
+    android:background="#FFFFFF">
 
-<ImageView
-    android:id="@+id/imageView"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:scaleType="fitXY"
-    android:layout_alignParentLeft="true"
-    android:layout_alignParentTop="true"
-    android:layout_marginTop="0dp" />
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="0dp"
+        android:scaleType="fitXY" />
 
     <LinearLayout
-        android:orientation="horizontal"
+        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/linearLayout">
+        android:orientation="horizontal">
 
         <ImageButton
+            android:id="@+id/imageButton5"
             android:layout_width="120dp"
             android:layout_height="80dp"
-            android:id="@+id/imageButton5"
-            android:layout_gravity="left|top"
-            android:background="@drawable/back_arrow"
+            android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
-            android:layout_alignParentStart="true" />
+            android:layout_gravity="left|top"
+            android:background="@drawable/back_arrow" />
 
         <LinearLayout
-            android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:gravity="right">
+            android:gravity="right"
+            android:orientation="horizontal">
 
             <ImageButton
-            android:layout_width="97dp"
-            android:layout_height="83dp"
-            android:id="@+id/imageButton6"
-            android:layout_gravity="left|top"
-            android:background="@drawable/img_lists"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true" />
+                android:id="@+id/imageButton6"
+                android:layout_width="97dp"
+                android:layout_height="83dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_gravity="left|top"
+                android:background="@drawable/img_lists" />
 
             <ImageButton
-            android:layout_width="88dp"
-            android:layout_height="88dp"
-            android:id="@+id/buttonQRcode"
-            android:layout_gravity="left|top"
-            android:background="@drawable/qr"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true" />
+                android:id="@+id/buttonQRcode"
+                android:layout_width="88dp"
+                android:layout_height="88dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_gravity="left|top"
+                android:background="@drawable/qr" />
 
             <ImageButton
-            android:layout_width="81dp"
-            android:layout_height="87dp"
-            android:id="@+id/buttonDelete"
-                android:background="@drawable/dustbin"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true" />
+                android:id="@+id/buttonDelete"
+                android:layout_width="81dp"
+                android:layout_height="87dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:background="@drawable/dustbin" />
         </LinearLayout>
 
     </LinearLayout>
 
     <TextView
-    android:layout_width="match_parent"
-    android:layout_height="3dp"
-    android:textAppearance="?android:attr/textAppearanceLarge"
-    android:id="@+id/textView"
-    android:layout_gravity="left|top"
-    android:background="#999999"
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:layout_below="@+id/linearLayout"
+        android:layout_gravity="left|top"
         android:layout_marginLeft="0dp"
-        android:layout_below="@+id/linearLayout" />
+        android:background="#999999"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/textView"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_toEndOf="@+id/imageView"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentRight="true">
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_toEndOf="@+id/imageView">
 
         <ImageView
-        android:id="@+id/photo"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:scaleType="fitXY"
-        android:layout_gravity="center"
-        android:background="#FFFFFF"
+            android:id="@+id/photo"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:layout_alignParentStart="false"
-            android:layout_alignParentBottom="false"
-            android:layout_alignParentEnd="false"
             android:layout_alignParentLeft="false"
-            android:layout_alignParentRight="false"
             android:layout_alignParentTop="false"
-            android:layout_centerInParent="true" />
+            android:layout_alignParentEnd="false"
+            android:layout_alignParentRight="false"
+            android:layout_alignParentBottom="false"
+            android:layout_centerInParent="true"
+            android:layout_gravity="center"
+            android:background="#FFFFFF"
+            android:scaleType="fitXY" />
 
         <ProgressBar
-        android:layout_width="174dp"
-        android:layout_height="174dp"
-        android:id="@+id/progressBar"
-        android:indeterminate="true"
-        android:layout_gravity="center"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true" />
+            android:id="@+id/progressBar"
+            android:layout_width="174dp"
+            android:layout_height="174dp"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center"
+            android:indeterminate="true" />
     </RelativeLayout>
 
 

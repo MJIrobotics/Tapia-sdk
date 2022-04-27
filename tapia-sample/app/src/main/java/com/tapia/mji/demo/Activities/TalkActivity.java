@@ -120,7 +120,7 @@ public class TalkActivity extends TapiaActivity {
             public void onRotate(TapiaRobotManager.Direction orientation, int degree) {
                 String speech = getString(R.string.rotate_sentence0);
                 String direction;
-                switch (orientation){
+                switch (orientation) {
                     case LEFT:
                         direction = getString(R.string.direction_left0);
                         break;
@@ -150,7 +150,6 @@ public class TalkActivity extends TapiaActivity {
     }
 
 
-
     @Override
     protected void onResume() {
         super.onResume();
@@ -159,9 +158,9 @@ public class TalkActivity extends TapiaActivity {
         sttProvider.setOnStateChangeListener(new STTProvider.OnStateChangeListener() {
             @Override
             public void onStateChange(STTProvider.State newState) {
-                switch (newState){
+                switch (newState) {
                     case IDLE:
-                        if(ttsProvider.getTTSState() == TTSProvider.State.IDLE)
+                        if (ttsProvider.getTTSState() == TTSProvider.State.IDLE)
                             tapiaAnimation.setBackground(0);
                         break;
                     case LISTENING:
@@ -181,18 +180,18 @@ public class TalkActivity extends TapiaActivity {
                     public void OnAnalyseComplete(Action action) {
                         if (action == null) {
                             tapiaAnimation.stopAnimation();
-                            tapiaAnimation.startAtFrameEndAtFrame(TapiaAnimation.CONFUSED,true,26,89);
+                            tapiaAnimation.startAtFrameEndAtFrame(TapiaAnimation.CONFUSED, true, 26, 89);
                             ttsProvider.setOnStateChangeListener(null);
                             tapiaAnimation.setBackground(R.drawable.gradient_pink);
                             try {
-                                ttsProvider.ask(getString(R.string.general_dont_understand0),sttProvider);
+                                ttsProvider.ask(getString(R.string.general_dont_understand0), sttProvider);
                             } catch (LanguageNotSupportedException e) {
                                 e.printStackTrace();
                             }
                             ttsProvider.setOnSpeechCompleteListener(new TTSProvider.OnSpeechCompleteListener() {
                                 @Override
                                 public void onSpeechComplete() {
-                                    tapiaAnimation.startAnimation(TapiaAnimation.PLAIN,true);
+                                    tapiaAnimation.startAnimation(TapiaAnimation.PLAIN, true);
                                     tapiaAnimation.setBackground(0);
                                     ttsProvider.setOnStateChangeListener(onTTSstateListener);
                                 }
@@ -200,7 +199,7 @@ public class TalkActivity extends TapiaActivity {
                         }
                     }
                 });
-                offlineNLUProvider.analyseText(results,actions);
+                offlineNLUProvider.analyseText(results, actions);
             }
         });
         sttProvider.setOnTimeOutListener(new STTProvider.OnTimeOutListener() {
@@ -209,33 +208,32 @@ public class TalkActivity extends TapiaActivity {
                 finish();
             }
         });
-        if(isFirstTime) {
-            startString = TapiaResources.getRandStr(this,"service_hello",0);
+        if (isFirstTime) {
+            startString = TapiaResources.getRandStr(this, "service_hello", 0);
             isFirstTime = false;
-            tapiaAnimation.reverseStartAtFrame(TapiaAnimation.TRANSITION1 ,false,16);
+            tapiaAnimation.reverseStartAtFrame(TapiaAnimation.TRANSITION1, false, 16);
             tapiaAnimation.setOnAnimationEndListener(new TapiaAnimation.OnAnimationEndListener() {
                 @Override
                 public void animationEnded() {
-                    tapiaAnimation.startAnimation(TapiaAnimation.PLAIN,true);
+                    tapiaAnimation.startAnimation(TapiaAnimation.PLAIN, true);
                     tapiaAnimation.setBackground(R.drawable.gradient_aqua);
                     try {
-                        ttsProvider.ask(startString,sttProvider);
+                        ttsProvider.ask(startString, sttProvider);
                     } catch (LanguageNotSupportedException e) {
                         e.printStackTrace();
                     }
                 }
             });
-        }
-        else {
-            startString = TapiaResources.getRandStr(this,"service_offerHelp",1);
+        } else {
+            startString = TapiaResources.getRandStr(this, "service_offerHelp", 1);
             try {
 
                 ttsProvider.sayIn("hello", Language.LanguageID.ENGLISH_US);
-                ttsProvider.ask(startString,sttProvider);
+                ttsProvider.ask(startString, sttProvider);
             } catch (LanguageNotSupportedException e) {
                 e.printStackTrace();
             }
-            tapiaAnimation.startAnimation(TapiaAnimation.PLAIN,true);
+            tapiaAnimation.startAnimation(TapiaAnimation.PLAIN, true);
         }
     }
 
@@ -244,7 +242,6 @@ public class TalkActivity extends TapiaActivity {
         super.onPause();
         tapiaAnimation.stopAnimation();
     }
-
 
 
 }

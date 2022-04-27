@@ -28,35 +28,37 @@ public class Local_NLU implements OfflineNLUProvider {
     ArrayList<Keyword> myKeywords = new ArrayList<>();
     OnAnalyseCompleteListener onAnalyseCompleteListener;
     static Local_NLU myInstance = null;
-    static public Local_NLU getInstance(Context context, Language.LanguageID language){
-        if(myInstance == null || !language.equals(myInstance.language)){
-            myInstance = new Local_NLU(context,language);
+
+    static public Local_NLU getInstance(Context context, Language.LanguageID language) {
+        if (myInstance == null || !language.equals(myInstance.language)) {
+            myInstance = new Local_NLU(context, language);
         }
         return myInstance;
     }
 
-    class Keyword{
+    class Keyword {
         String[] keywordArray;
         Action.ActionType actionType;
-        Keyword (String[] keywordArray, Action.ActionType actionType){
+
+        Keyword(String[] keywordArray, Action.ActionType actionType) {
             this.keywordArray = keywordArray;
             this.actionType = actionType;
         }
     }
+
     Context context;
 
-    public Local_NLU(Context context, Language.LanguageID language){
+    public Local_NLU(Context context, Language.LanguageID language) {
         this.language = language;
         this.context = context;
 //        myKeywords.add(new Keyword(new String[]{"call","record"}, Action.ActionType.));
 //        myKeywords.add(new Keyword(new String[]{"keyword", "setting"}, Action.ActionType.));
-        if(language == Language.LanguageID.ENGLISH_US || language == Language.LanguageID.ENGLISH_UK) {
+        if (language == Language.LanguageID.ENGLISH_US || language == Language.LanguageID.ENGLISH_UK) {
             myKeywords.add(new Keyword(new String[]{"what", "time"}, GIVE_TIME));
             myKeywords.add(new Keyword(new String[]{"rotate", "degree"}, MyAction.MyActionType.ROTATE));
 
 
-        }
-        else if(language == Language.LanguageID.JAPANESE){
+        } else if (language == Language.LanguageID.JAPANESE) {
             myKeywords.add(new Keyword(new String[]{"何時"}, MyAction.MyActionType.GIVE_TIME));
             myKeywords.add(new Keyword(new String[]{"何曜日"}, MyAction.MyActionType.GIVE_DATE));
             myKeywords.add(new Keyword(new String[]{"何日"}, MyAction.MyActionType.GIVE_DATE));
@@ -72,34 +74,34 @@ public class Local_NLU implements OfflineNLUProvider {
             public void run() {
 
                 ArrayList<Keyword> listToAnalyse = new ArrayList<Keyword>();
-                for (Action act: actionToListen) {
-                    for (Keyword keyword: myKeywords) {
-                        if(keyword.actionType == act.getType()){
+                for (Action act : actionToListen) {
+                    for (Keyword keyword : myKeywords) {
+                        if (keyword.actionType == act.getType()) {
                             listToAnalyse.add(keyword);
                         }
                     }
                 }
-                Keyword keywordGroup = getSimpleBestKeywordsGroup(listToAnalyse,sentences);
+                Keyword keywordGroup = getSimpleBestKeywordsGroup(listToAnalyse, sentences);
                 Action resultAction = null;
-                if(keywordGroup != null){
-                    switch ((MyAction.MyActionType)keywordGroup.actionType) {
+                if (keywordGroup != null) {
+                    switch ((MyAction.MyActionType) keywordGroup.actionType) {
                         case ROTATE:
                             Rotate rotate = (Rotate) Action.queryAction(actionToListen, MyAction.MyActionType.ROTATE);
-                            if(rotate != null) {
+                            if (rotate != null) {
                                 for (String sentence : sentences) {
                                     if (sentence.contains(context.getString(R.string.direction_left0)))
                                         rotate.setOrientation(TapiaRobotManager.Direction.LEFT);
-                                    else if(sentence.contains(context.getString(R.string.direction_right0)))
+                                    else if (sentence.contains(context.getString(R.string.direction_right0)))
                                         rotate.setOrientation(TapiaRobotManager.Direction.RIGHT);
-                                    else if(sentence.contains(context.getString(R.string.direction_up0)))
+                                    else if (sentence.contains(context.getString(R.string.direction_up0)))
                                         rotate.setOrientation(TapiaRobotManager.Direction.UP);
-                                    else if(sentence.contains(context.getString(R.string.direction_down0)))
+                                    else if (sentence.contains(context.getString(R.string.direction_down0)))
                                         rotate.setOrientation(TapiaRobotManager.Direction.DOWN);
                                 }
                                 int degrees = -1;
                                 for (String sentence : sentences) {
                                     try {
-                                        if(language.equals(Language.LanguageID.JAPANESE)){
+                                        if (language.equals(Language.LanguageID.JAPANESE)) {
                                             sentence = Japanese.convertFullWidthNumberToHalfWidthNumber(sentence);
                                         }
 
@@ -117,14 +119,14 @@ public class Local_NLU implements OfflineNLUProvider {
                             }
                             break;
                         default:
-                            resultAction = Action.queryAction(actionToListen,keywordGroup.actionType);
+                            resultAction = Action.queryAction(actionToListen, keywordGroup.actionType);
                             break;
                     }
                 }
-                if(resultAction != null) {
+                if (resultAction != null) {
                     resultAction.onAction();
                 }
-                if(onAnalyseCompleteListener !=null) {
+                if (onAnalyseCompleteListener != null) {
                     onAnalyseCompleteListener.OnAnalyseComplete(resultAction);
                 }
             }
@@ -136,16 +138,16 @@ public class Local_NLU implements OfflineNLUProvider {
         this.onAnalyseCompleteListener = onAnalyseCompleteListener;
     }
 
-    public Keyword getSimpleBestKeywordsGroup(ArrayList<Keyword> keywords, List<String> sentences){
+    public Keyword getSimpleBestKeywordsGroup(ArrayList<Keyword> keywords, List<String> sentences) {
         Keyword bestKeywords = null;
         for (int k = sentences.size() - 1; k >= 0; k--) {
-            for (Keyword kw: keywords) {
+            for (Keyword kw : keywords) {
                 boolean isMatch = true;
-                for (String word: kw.keywordArray) {
-                    if(!sentences.get(k).toLowerCase().contains(word.toLowerCase()))
+                for (String word : kw.keywordArray) {
+                    if (!sentences.get(k).toLowerCase().contains(word.toLowerCase()))
                         isMatch = false;
                 }
-                if(isMatch)
+                if (isMatch)
                     bestKeywords = kw;
             }
         }
@@ -153,22 +155,21 @@ public class Local_NLU implements OfflineNLUProvider {
         return bestKeywords;
     }
 
-    public String[] getBestKeywordsGroup(ArrayList<String[]> keywords, List<String> sentences){
+    public String[] getBestKeywordsGroup(ArrayList<String[]> keywords, List<String> sentences) {
         int[] weights = new int[keywords.size()];
 
         for (int k = 0; k < keywords.size(); k++) {
-            String[] keyword =  keywords.get(k);
-            for (int l =  0; l < keyword.length; l++) {
+            String[] keyword = keywords.get(k);
+            for (int l = 0; l < keyword.length; l++) {
                 String keywordOnlyWords = keyword[l].replace(",", "").replace(".", "");
                 List<String> keywordWords = Arrays.asList(keywordOnlyWords.split(" "));
-                for(int i = 0; i < sentences.size(); i++){
+                for (int i = 0; i < sentences.size(); i++) {
                     String resultOnlyWords = sentences.get(i).replace(",", "").replace(".", "");
                     List<String> resultWords = Arrays.asList(resultOnlyWords.split(" "));
-                    if(keywordOnlyWords.length() < 8 && keywordWords.size() > 1) {
+                    if (keywordOnlyWords.length() < 8 && keywordWords.size() > 1) {
                         if (resultOnlyWords.contains(keywordOnlyWords))
-                            weights[k] += (sentences.size() + 1 - i)*keywordWords.size();
-                    }
-                    else {
+                            weights[k] += (sentences.size() + 1 - i) * keywordWords.size();
+                    } else {
                         for (String resultWord : resultWords) {
                             for (String keywordWord : keywordWords) {
                                 if (keywordWord.length() <= 4 && keywordWord.length() > 1)
@@ -187,28 +188,28 @@ public class Local_NLU implements OfflineNLUProvider {
                         }
                     }
                 }
-                if(l==0 && weights[k] == 0)
+                if (l == 0 && weights[k] == 0)
                     break;
             }
         }
         int bestWeightPos = 0;
-        int bestWeightValue =0;
-        for (int j = 0; j < weights.length;j++) {
-            if(bestWeightValue < weights[j]){
+        int bestWeightValue = 0;
+        for (int j = 0; j < weights.length; j++) {
+            if (bestWeightValue < weights[j]) {
                 bestWeightValue = weights[j];
                 bestWeightPos = j;
             }
         }
         //no keyword found
-        if(bestWeightValue <= 20)
+        if (bestWeightValue <= 20)
             return null;
         else {
             int drawNumber = 0;
             for (int weight : weights) {
-                if(weight == weights[bestWeightPos])
+                if (weight == weights[bestWeightPos])
                     drawNumber++;
             }
-            if(drawNumber > 1)
+            if (drawNumber > 1)
                 return null;
 
             return keywords.get(bestWeightPos);

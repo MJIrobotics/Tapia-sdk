@@ -94,8 +94,8 @@ public class PhotoFragment extends DialogFragment {
         qrcode.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(!isBusy){
-                    params.put("filename",photoName);
+                if (!isBusy) {
+                    params.put("filename", photoName);
                     encodeImagetoString();
                     loadingBar.setVisibility(View.VISIBLE);
                 }
@@ -181,17 +181,16 @@ public class PhotoFragment extends DialogFragment {
     }
 
 
-
     @Override
-    public void onDismiss(DialogInterface dialogInterface){
-        TapiaNetwork.getJson("http://mji.main.jp/Robot/deleteImage.php?name=" + photoName.replace(".jpg","").replace(".jpeg",""),null);
+    public void onDismiss(DialogInterface dialogInterface) {
+        TapiaNetwork.getJson("http://mji.main.jp/Robot/deleteImage.php?name=" + photoName.replace(".jpg", "").replace(".jpeg", ""), null);
     }
 
     @Override
-    public void onStart(){
+    public void onStart() {
         super.onStart();
         getDialog().getWindow().getDecorView().setSystemUiVisibility(
-        getActivity().getWindow().getDecorView().getSystemUiVisibility());
+                getActivity().getWindow().getDecorView().getSystemUiVisibility());
         getDialog().getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE);
         WindowManager.LayoutParams lp = new WindowManager.LayoutParams();
         lp.copyFrom(getDialog().getWindow().getAttributes());
@@ -206,14 +205,16 @@ public class PhotoFragment extends DialogFragment {
 
             protected void onPreExecute() {
 
-            };
+            }
+
+            ;
 
             @Override
             protected String doInBackground(Void... params) {
                 BitmapFactory.Options options = null;
                 options = new BitmapFactory.Options();
                 options.inSampleSize = 3;
-                Bitmap bitmap = BitmapFactory.decodeFile(imgFile.getAbsolutePath(),options);
+                Bitmap bitmap = BitmapFactory.decodeFile(imgFile.getAbsolutePath(), options);
                 ByteArrayOutputStream stream = new ByteArrayOutputStream();
                 // Must compress the Image to reduce image size to make upload easy
                 bitmap.compress(Bitmap.CompressFormat.PNG, 50, stream);

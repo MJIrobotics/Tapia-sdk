@@ -31,7 +31,7 @@ public class PhotoShowAdapter extends BaseAdapter {
     Activity activity;
     private LayoutInflater inflater;
 
-    public PhotoShowAdapter(Activity activity, List<PhotoShowActivity.PhotoListItem> photoList){
+    public PhotoShowAdapter(Activity activity, List<PhotoShowActivity.PhotoListItem> photoList) {
         this.photoList = photoList;
         this.activity = activity;
         inflater = LayoutInflater.from(activity);
@@ -69,13 +69,13 @@ public class PhotoShowAdapter extends BaseAdapter {
 
         final PhotoShowActivity.PhotoListItem myItem = photoList.get(position);
 
-        if(holder.content_ll != null){
-            if( holder.content_ll.getChildCount() > 0)
+        if (holder.content_ll != null) {
+            if (holder.content_ll.getChildCount() > 0)
                 holder.content_ll.removeAllViews();
         }
 
-        for (int i = 0; i < myItem.pictureNames.length;i++) {
-            if(myItem.pictureNames[i] != null) {
+        for (int i = 0; i < myItem.pictureNames.length; i++) {
+            if (myItem.pictureNames[i] != null) {
                 final int index = i;
                 File imgFile = new File(myItem.pictureNames[i]);
 
@@ -86,7 +86,7 @@ public class PhotoShowAdapter extends BaseAdapter {
                 myItem.picturesView[i].setLayoutParams(new LinearLayout.LayoutParams(0, 250, 1f));
                 myItem.picturesView[i].setBackgroundResource(R.drawable.button_image);
                 myItem.picturesView[i].setScaleType(ImageView.ScaleType.FIT_XY);
-                myItem.picturesView[i].setPadding(5,5,5,5);
+                myItem.picturesView[i].setPadding(5, 5, 5, 5);
                 myItem.picturesView[i].setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -106,8 +106,7 @@ public class PhotoShowAdapter extends BaseAdapter {
                     }
                 });
                 holder.content_ll.addView(myItem.picturesView[i]);
-            }
-            else {
+            } else {
                 ImageView filler = new ImageView(activity);
                 filler.setLayoutParams(new LinearLayout.LayoutParams(0, 250, 1f));
                 holder.content_ll.addView(filler);

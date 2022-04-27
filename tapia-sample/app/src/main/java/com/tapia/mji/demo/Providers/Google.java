@@ -35,12 +35,14 @@ public class Google implements GeocodeProvider {
     GeocodeListener geocodeListener;
 
     static Google myInstance = null;
-    public static Google getInstance(Context context, Language.LanguageID language){
-        if(myInstance == null || !language.equals(myInstance.language)){
-            myInstance = new Google(context,language);
+
+    public static Google getInstance(Context context, Language.LanguageID language) {
+        if (myInstance == null || !language.equals(myInstance.language)) {
+            myInstance = new Google(context, language);
         }
         return myInstance;
     }
+
     boolean isStopped = true;
 
     LocationListener locationListener = new LocationListener() {
@@ -70,7 +72,8 @@ public class Google implements GeocodeProvider {
 
         }
     };
-    public Google(Context context, final Language.LanguageID language){
+
+    public Google(Context context, final Language.LanguageID language) {
         this.context = context;
         this.language = language;
         locationManager = (LocationManager) context.getSystemService(Context.LOCATION_SERVICE);
@@ -135,7 +138,7 @@ public class Google implements GeocodeProvider {
 //                locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0, locationListener);
 //                locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, locationListener);
 //            }
-        }catch (Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
@@ -143,11 +146,11 @@ public class Google implements GeocodeProvider {
     @Override
     public void getCityLocation(String cityStr, final GeocodeListener geocodeListener) {
         Address cityLocation = null;
-        TapiaNetwork.getJson("https://maps.googleapis.com/maps/api/geocode/json?&address=" + cityStr.replace(" ","%20"), new TapiaNetwork.OnJSONListener() {
+        TapiaNetwork.getJson("https://maps.googleapis.com/maps/api/geocode/json?&address=" + cityStr.replace(" ", "%20"), new TapiaNetwork.OnJSONListener() {
             @Override
             public void onJSON(JSONObject jsonObject) {
                 try {
-                    if(jsonObject.getString("status").equals("OK")) {
+                    if (jsonObject.getString("status").equals("OK")) {
                         Address cityAddress = new Address(Locale.ENGLISH);
                         JSONArray results = jsonObject.getJSONArray("results");
                         JSONObject firstResult = results.getJSONObject(0);
@@ -155,8 +158,7 @@ public class Google implements GeocodeProvider {
                         cityAddress.setLongitude(location.getDouble("lng"));
                         cityAddress.setLatitude(location.getDouble("lat"));
                         geocodeListener.onLocationFinished(cityAddress);
-                    }
-                    else {
+                    } else {
                         //error
                         geocodeListener.onLocationFinished(null);
                     }

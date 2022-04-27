@@ -28,7 +28,7 @@ public class PhotoShowActivity extends TapiaActivity {
 
     PhotoShowAdapter photoAdapter;
     ListView photoList;
-    int setcted=0;
+    int setcted = 0;
     String fileName;
     File dest;
     String dirPath;
@@ -40,15 +40,15 @@ public class PhotoShowActivity extends TapiaActivity {
     public List<PhotoListItem> curPhotoList;
     public String selectedPhoto;
 
-    public class PhotoListItem{
+    public class PhotoListItem {
         public String[] pictureNames;
         public ImageView[] picturesView;
 
-        PhotoListItem(String[] photosName){
+        PhotoListItem(String[] photosName) {
             pictureNames = new String[PHOTO_BY_LINE];
             picturesView = new ImageView[PHOTO_BY_LINE];
             int index = 0;
-            for (String pName:photosName) {
+            for (String pName : photosName) {
                 pictureNames[index] = pName;
                 picturesView[index] = new ImageView(activity);
                 index++;
@@ -60,14 +60,14 @@ public class PhotoShowActivity extends TapiaActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_showphoto);
-        local = (ImageButton)findViewById(R.id.localButton);
-        sdcard = (ImageButton)findViewById(R.id.sdcardButton);
-        home = (ImageButton)findViewById(R.id.homeButton);
-        photoList = (ListView)findViewById(android.R.id.list);
+        local = (ImageButton) findViewById(R.id.localButton);
+        sdcard = (ImageButton) findViewById(R.id.sdcardButton);
+        home = (ImageButton) findViewById(R.id.homeButton);
+        photoList = (ListView) findViewById(android.R.id.list);
 //        dirPath = CameraHelper.PICTURE_FOLDER;
         dirPathThumbnail = CameraHelper.SMALL_PICTURE_FOLDER;
         loadPictures(dirPathThumbnail);
-        photoAdapter = new PhotoShowAdapter(activity,curPhotoList);
+        photoAdapter = new PhotoShowAdapter(activity, curPhotoList);
         photoList.setAdapter(photoAdapter);
 
         TapiaApp.setCustomViewBackground(((ViewGroup) findViewById(android.R.id.content)).getChildAt(0).getBackground());
@@ -75,9 +75,9 @@ public class PhotoShowActivity extends TapiaActivity {
         local.setSelected(true);
         sdcard.setSelected(false);
 
-        sttProvider         = TapiaApp.currentLanguage.getOnlineSTTProvider();
-        ttsProvider         = TapiaApp.currentLanguage.getTTSProvider();
-        offlineNLUProvider  = TapiaApp.currentLanguage.getOfflineNLUProvider();
+        sttProvider = TapiaApp.currentLanguage.getOnlineSTTProvider();
+        ttsProvider = TapiaApp.currentLanguage.getTTSProvider();
+        offlineNLUProvider = TapiaApp.currentLanguage.getOfflineNLUProvider();
 
         home.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -109,25 +109,25 @@ public class PhotoShowActivity extends TapiaActivity {
     }
 
 
-    void loadPictures(String path){
+    void loadPictures(String path) {
         File picFile = new File(path);
         curPhotoList = new ArrayList<>();
         String[] itemPictureList = new String[PHOTO_BY_LINE];
         int itemPicIndex = 0;
-        if(picFile.exists() && picFile.isDirectory() && picFile.list() != null){
-            for (String pName: picFile.list()) {
-                if(pName.contains(".jpeg") || pName.contains(".jpg") || pName.contains(".png")){
+        if (picFile.exists() && picFile.isDirectory() && picFile.list() != null) {
+            for (String pName : picFile.list()) {
+                if (pName.contains(".jpeg") || pName.contains(".jpg") || pName.contains(".png")) {
                     itemPictureList[itemPicIndex] = path + pName;
                     itemPicIndex++;
-                    if(itemPicIndex == PHOTO_BY_LINE){
+                    if (itemPicIndex == PHOTO_BY_LINE) {
                         curPhotoList.add(new PhotoListItem(itemPictureList));
                         itemPicIndex = 0;
                     }
                 }
             }
 
-            if(itemPicIndex > 0){
-                for(int i = itemPicIndex; i<PHOTO_BY_LINE;i++) {
+            if (itemPicIndex > 0) {
+                for (int i = itemPicIndex; i < PHOTO_BY_LINE; i++) {
                     itemPictureList[i] = null;
                 }
                 curPhotoList.add(new PhotoListItem(itemPictureList));
@@ -135,15 +135,15 @@ public class PhotoShowActivity extends TapiaActivity {
         }
     }
 
-    public void refreshList(){
+    public void refreshList() {
         loadPictures(dirPathThumbnail);
         photoAdapter.refresh(curPhotoList);
     }
 
-    public Drawable findImageView(String photoName){
-        for (PhotoListItem photoItem: curPhotoList) {
-            for(int i = 0; i < PHOTO_BY_LINE; i++){
-                if(photoItem.pictureNames[i].equals(photoName))
+    public Drawable findImageView(String photoName) {
+        for (PhotoListItem photoItem : curPhotoList) {
+            for (int i = 0; i < PHOTO_BY_LINE; i++) {
+                if (photoItem.pictureNames[i].equals(photoName))
                     return photoItem.picturesView[i].getDrawable();
             }
         }
