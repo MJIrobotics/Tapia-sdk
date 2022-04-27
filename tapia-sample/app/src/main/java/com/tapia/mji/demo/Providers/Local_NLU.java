@@ -51,14 +51,18 @@ public class Local_NLU implements OfflineNLUProvider {
     public Local_NLU(Context context, Language.LanguageID language) {
         this.language = language;
         this.context = context;
-        if (language == Language.LanguageID.ENGLISH_US || language == Language.LanguageID.ENGLISH_UK) {
-            myKeywords.add(new Keyword(new String[]{"what", "time"}, GIVE_TIME));
-            myKeywords.add(new Keyword(new String[]{"rotate", "degree"}, MyAction.MyActionType.ROTATE));
-        } else if (language == Language.LanguageID.JAPANESE) {
-            myKeywords.add(new Keyword(new String[]{"何時"}, MyAction.MyActionType.GIVE_TIME));
-            myKeywords.add(new Keyword(new String[]{"何曜日"}, MyAction.MyActionType.GIVE_DATE));
-            myKeywords.add(new Keyword(new String[]{"何日"}, MyAction.MyActionType.GIVE_DATE));
-            myKeywords.add(new Keyword(new String[]{"回転", "°"}, MyAction.MyActionType.ROTATE));
+        switch (language) {
+            case ENGLISH_US:
+            case ENGLISH_UK:
+                myKeywords.add(new Keyword(new String[]{"what", "time"}, GIVE_TIME));
+                myKeywords.add(new Keyword(new String[]{"rotate", "degree"}, MyAction.MyActionType.ROTATE));
+                break;
+            case JAPANESE:
+                myKeywords.add(new Keyword(new String[]{"何時"}, MyAction.MyActionType.GIVE_TIME));
+                myKeywords.add(new Keyword(new String[]{"何曜日"}, MyAction.MyActionType.GIVE_DATE));
+                myKeywords.add(new Keyword(new String[]{"何日"}, MyAction.MyActionType.GIVE_DATE));
+                myKeywords.add(new Keyword(new String[]{"回転", "°"}, MyAction.MyActionType.ROTATE));
+                break;
         }
     }
 

@@ -195,12 +195,13 @@ public class PhotoFragment extends DialogFragment {
             @Override
             public void onFailure(int statusCode, cz.msebera.android.httpclient.Header[] headers, byte[] responseBody, Throwable error) {
                 loadingBar.setVisibility(View.INVISIBLE);
-                if (statusCode == 404) {
-                }
-                else if (statusCode == 500) {
-                }
-                else {
-
+                switch (statusCode) {
+                    case 404:
+                        break;
+                    case 500:
+                        break;
+                    default:
+                        break;
                 }
             }
 
