@@ -116,6 +116,11 @@ SDK for developing on Tapia. <br /><br />
 
 ## Release Note
 
+ver.2.1.0<br />
+機能追加<br />
+・ タピアの回転用のメソッドを新しく追加しました。
+・ 古い回転用のメソッドを Duplicated に変更しました。
+
 ver.2.0.1<br />
 機能追加<br />
 ・ タピアの音声認識を変更しました。
