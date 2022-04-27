@@ -31,6 +31,7 @@ import com.tapia.mji.tapialib.Utils.TapiaNetwork;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
 
 /**
  * Created by Sami on 11-Jul-16.
@@ -67,15 +68,15 @@ public class PhotoFragment extends DialogFragment {
         Bundle args = getArguments();
         final String photoPath = args.getString("photoPath");
         View view = LayoutInflater.from(getActivity()).inflate(R.layout.fragment_photo, null);
-        loadingBar = (ProgressBar) view.findViewById(R.id.progressBar);
+        loadingBar = view.findViewById(R.id.progressBar);
         loadingBar.setVisibility(View.GONE);
-        Limage = (ImageView) view.findViewById(R.id.photo);
-        Simage = (ImageView) view.findViewById(R.id.imageView);
-        back = (ImageButton) view.findViewById(R.id.imageButton5);
-        home = (ImageButton) view.findViewById(R.id.imageButton6);
-        qrcode = (ImageButton) view.findViewById(R.id.buttonQRcode);
-        delete = (ImageButton) view.findViewById(R.id.buttonDelete);
-        line = (TextView) view.findViewById(R.id.textView);
+        Limage = view.findViewById(R.id.photo);
+        Simage = view.findViewById(R.id.imageView);
+        back = view.findViewById(R.id.imageButton5);
+        home = view.findViewById(R.id.imageButton6);
+        qrcode = view.findViewById(R.id.buttonQRcode);
+        delete = view.findViewById(R.id.buttonDelete);
+        line = view.findViewById(R.id.textView);
 
 
         AlertDialog myDialog = new AlertDialog.Builder(getActivity())
@@ -207,8 +208,6 @@ public class PhotoFragment extends DialogFragment {
 
             }
 
-            ;
-
             @Override
             protected String doInBackground(Void... params) {
                 BitmapFactory.Options options = null;
@@ -243,7 +242,7 @@ public class PhotoFragment extends DialogFragment {
             public void onSuccess(int statusCode, cz.msebera.android.httpclient.Header[] headers, byte[] responseBody) {
                 loadingBar.setVisibility(View.INVISIBLE);
                 try {
-                    String str = new String(responseBody, "UTF-8");
+                    String str = new String(responseBody, StandardCharsets.UTF_8);
                     Limage.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
                     loadingBar.setVisibility(View.GONE);
                     new DownloadImageTask(Limage).execute(str);

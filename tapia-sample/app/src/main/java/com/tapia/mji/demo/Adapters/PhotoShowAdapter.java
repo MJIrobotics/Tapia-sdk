@@ -59,7 +59,7 @@ public class PhotoShowAdapter extends BaseAdapter {
         if (convertView == null) {
             holder = new ViewHolder();
             convertView = inflater.inflate(R.layout.item_photo, parent, false);
-            holder.content_ll = (LinearLayout) convertView.findViewById(R.id.photoLayout);
+            holder.content_ll = convertView.findViewById(R.id.photoLayout);
             convertView.setTag(holder);
         } else {
             holder = (ViewHolder) convertView.getTag();

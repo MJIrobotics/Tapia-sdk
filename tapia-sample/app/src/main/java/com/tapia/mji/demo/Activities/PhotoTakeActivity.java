@@ -39,8 +39,8 @@ public class PhotoTakeActivity extends TapiaActivity {
 
         ttsProvider = TapiaApp.currentLanguage.getTTSProvider();
 
-        countdownView = (ImageView) findViewById(R.id.countdownView);
-        previewView = (SurfaceView) findViewById(R.id.previewView);
+        countdownView = findViewById(R.id.countdownView);
+        previewView = findViewById(R.id.previewView);
 
         actionListRepeat = new ArrayList<>();
 

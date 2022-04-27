@@ -41,7 +41,7 @@ public class TalkActivity extends TapiaActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.eyes_layout);
-        ImageView tapiaEyes = (ImageView) findViewById(R.id.eyes);
+        ImageView tapiaEyes = findViewById(R.id.eyes);
         tapiaAnimation = new TapiaAnimation(this, tapiaEyes);
         tapiaEyes.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
