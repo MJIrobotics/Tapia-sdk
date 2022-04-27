@@ -3,16 +3,6 @@
     android:layout_width="1150dp"
     android:layout_height="720dp"
     android:background="#FFFFFF">
-
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="0dp"
-        android:scaleType="fitXY" />
-
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
@@ -33,25 +23,6 @@
             android:layout_height="match_parent"
             android:gravity="right"
             android:orientation="horizontal">
-
-            <ImageButton
-                android:id="@+id/imageButton6"
-                android:layout_width="97dp"
-                android:layout_height="83dp"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentTop="true"
-                android:layout_gravity="left|top"
-                android:background="@drawable/img_lists" />
-
-            <ImageButton
-                android:id="@+id/buttonQRcode"
-                android:layout_width="88dp"
-                android:layout_height="88dp"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentTop="true"
-                android:layout_gravity="left|top"
-                android:background="@drawable/qr" />
-
             <ImageButton
                 android:id="@+id/buttonDelete"
                 android:layout_width="81dp"
@@ -80,8 +51,7 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:layout_alignParentBottom="true"
-        android:layout_toEndOf="@+id/imageView">
+        android:layout_alignParentBottom="true">
 
         <ImageView
             android:id="@+id/photo"
@@ -97,16 +67,5 @@
             android:layout_gravity="center"
             android:background="#FFFFFF"
             android:scaleType="fitXY" />
-
-        <ProgressBar
-            android:id="@+id/progressBar"
-            android:layout_width="174dp"
-            android:layout_height="174dp"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
-            android:layout_gravity="center"
-            android:indeterminate="true" />
     </RelativeLayout>
-
-
 </RelativeLayout>
