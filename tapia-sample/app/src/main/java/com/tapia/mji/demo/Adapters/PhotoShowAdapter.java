@@ -64,8 +64,6 @@ public class PhotoShowAdapter extends BaseAdapter {
         } else {
             holder = (ViewHolder) convertView.getTag();
         }
-//        holder.content_ll = new LinearLayout(context);
-//        holder.content_ll.setOrientation(LinearLayout.HORIZONTAL);
 
         final PhotoShowActivity.PhotoListItem myItem = photoList.get(position);
 

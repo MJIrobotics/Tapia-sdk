@@ -84,27 +84,9 @@ public class Google implements GeocodeProvider {
     public void getLocalLocation(final GeocodeListener geocodeListener) {
         Location loc = null;
         try {
-//            TapiaNetwork.getJson("http://ip-api.com/json", new TapiaNetwork.OnJSONListener() {
-//                @Override
-//                public void onJSON(JSONObject jsonObject) {
-//                    Address myAddress = new Address(Locale.ENGLISH);
-//                    try {
-//                        myAddress.setCountryName(jsonObject.getString("country"));
-//                        myAddress.setCountryCode(jsonObject.getString("countryCode"));
-//                        myAddress.setLatitude(jsonObject.getDouble("lat"));
-//                        myAddress.setLongitude(jsonObject.getDouble("lon"));
-//                        myAddress.setAdminArea(jsonObject.getString("city"));
-//                        geocodeListener.onLocationFinished(myAddress);
-//                    } catch (JSONException e) {
-//                        e.printStackTrace();
-//                    }
-//                }
-//            });
-
             TapiaNetwork.getJson("http://ipapi.co/json", jsonObject -> {
                 Address myAddress = new Address(Locale.ENGLISH);
                 try {
-//                        myAddress.setCountryName(jsonObject.getString("country"));
                     myAddress.setCountryCode(jsonObject.getString("country"));
                     myAddress.setLatitude(jsonObject.getDouble("latitude"));
                     myAddress.setLongitude(jsonObject.getDouble("longitude"));
@@ -114,27 +96,6 @@ public class Google implements GeocodeProvider {
                     e.printStackTrace();
                 }
             });
-//            loc = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
-//            List<Address> addresses = null;
-//            if (loc != null) {
-//                try {
-//                    addresses = geocoder.getFromLocation(loc.getLatitude(), loc.getLongitude(), 1);
-//                    geocodeListener.onLocationFinished(addresses.get(0));
-//                }
-//                catch (Exception e){
-//                    e.printStackTrace();
-//                    //if geocoder fail we can at least get the coordinate
-//                    Address add = new Address(Locale.getDefault());
-//                    add.setLatitude(loc.getLatitude());
-//                    add.setLongitude(loc.getLongitude());
-//                    geocodeListener.onLocationFinished(add);
-//                }
-//
-//            } else {
-//                this.geocodeListener = geocodeListener;
-//                locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0, locationListener);
-//                locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, locationListener);
-//            }
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -161,20 +122,5 @@ public class Google implements GeocodeProvider {
                 e.printStackTrace();
             }
         });
-//        try {
-//            List<Address> addresses = geocoder.getFromLocationName(cityStr, 1);
-//
-//            if (addresses.size() > 0) {
-//                double latitude1= addresses.get(0).getLatitude();
-//                double longitude1= addresses.get(0).getLongitude();
-//                cityLocation = addresses.get(0);
-//                //latitude = Double.toString(latitude1);
-//                //longitude =  Double.toString(longitude1);
-//            }
-//        }
-//        catch (IOException e){
-//            //couldn't find the location
-//        }
-//        return cityLocation;
     }
 }

@@ -99,55 +99,11 @@ public class PhotoFragment extends DialogFragment {
         home.setOnClickListener(v -> getDialog().dismiss());
         delete.setOnClickListener(v -> {
             v.setEnabled(false);
-//                final List<Action> actionList = new ArrayList<>();
-//                actionList.add(new SimpleAction.PositiveAnswer(new PositiveAnswer.OnSimpleActionListener() {
-//                    @Override
-//                    public void onSimpleAction() {
-//                        v.setEnabled(true);
-//                        File smallFile = new File(photoPath);
-//                        File bigFile   = new File(photoPath.replace(CameraHelper.SMALL_PICTURE_FOLDER,CameraHelper.PICTURE_FOLDER));
-//                        boolean deletedS = smallFile.delete();
-//                        boolean deletedB = bigFile.delete();
-//                        if(deletedS && deletedB){
-//                            photoShowActivity.ttsProvider.say(photoShowActivity.getString(R.string.photo_delete0));
-//                            photoShowActivity.refreshList();
-//                            getDialog().dismiss();
-//                            new DialogAnimation(photoShowActivity, TapiaAnimation.DELETE, false,TapiaAnimation.START,40).setBackground(R.drawable.background).show();
-//                        }
-//                        else {
-//                            photoShowActivity.ttsProvider.say(photoShowActivity.getString(R.string.photo_error_delete0));
-//                        }
-//                        photoShowActivity.ttsProvider.setOnSpeechCompleteListener(null);
-//                    }
-//                }));
-//                actionList.add(new SimpleAction.NegativeAnswer(new NegativeAnswer.OnSimpleActionListener() {
-//                    @Override
-//                    public void onSimpleAction() {
-//                        v.setEnabled(true);
-//                        photoShowActivity.ttsProvider.say(photoShowActivity.getString(R.string.photo_delete_complete0));
-//                        photoShowActivity.ttsProvider.setOnSpeechCompleteListener(null);
-//                    }
-//                }));
-
             try {
                 photoShowActivity.ttsProvider.say(photoShowActivity.getString(R.string.photo_ask_delete0));
             } catch (LanguageNotSupportedException e) {
                 e.printStackTrace();
             }
-//                photoShowActivity.sttProvider.setOnRecognitionCompleteListener(new STTProvider.OnRecognitionCompleteListener() {
-//                    @Override
-//                    public void onRecognitionComplete(List<String> results) {
-//                        photoShowActivity.offlineNLUProvider.analyseText(results,actionList);
-//                        photoShowActivity.offlineNLUProvider.setOnAnalyseCompleteListener(new NLUProvider.OnAnalyseCompleteListener() {
-//                            @Override
-//                            public void OnAnalyseComplete(Action action) {
-//                                if(action == null){
-//                                    photoShowActivity.ttsProvider.ask(photoShowActivity.getString(R.string.general_dont_understand1),photoShowActivity.sttProvider);
-//                                }
-//                            }
-//                        });
-//                    }
-//                });
         });
         Limage.setImageDrawable(photoShowActivity.findImageView(photoPath));
 
@@ -231,7 +187,6 @@ public class PhotoFragment extends DialogFragment {
                     loadingBar.setVisibility(View.GONE);
                     new DownloadImageTask(Limage).execute(str);
 
-
                 } catch (Exception e) {
 
                 }
@@ -240,25 +195,12 @@ public class PhotoFragment extends DialogFragment {
             @Override
             public void onFailure(int statusCode, cz.msebera.android.httpclient.Header[] headers, byte[] responseBody, Throwable error) {
                 loadingBar.setVisibility(View.INVISIBLE);
-                // When Http response code is '404'
                 if (statusCode == 404) {
-//                    Toast.makeText(getContext(),
-//                            "Requested resource not found",
-//                            Toast.LENGTH_LONG).show();
                 }
-                // When Http response code is '500'
                 else if (statusCode == 500) {
-//                    Toast.makeText(getContext(),
-//                            "Something went wrong at server end",
-//                            Toast.LENGTH_LONG).show();
                 }
-                // When Http response code other than 404, 500
                 else {
-//                    Toast.makeText(
-//                            getContext(),
-//                            "Error Occured n Most Common Error: n1. Device not connected to Internetn2. Web App is not deployed in App servern3. App server is not runningn HTTP Status code : "
-//                                    + statusCode, Toast.LENGTH_LONG)
-//                            .show();
+
                 }
             }
 

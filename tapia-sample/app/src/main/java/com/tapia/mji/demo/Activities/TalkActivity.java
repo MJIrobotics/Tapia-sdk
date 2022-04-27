@@ -87,25 +87,6 @@ public class TalkActivity extends TapiaActivity {
             }
         }));
 
-//        actions.add(new Actions.TakePhoto(new SimpleAction.OnSimpleActionListener() {
-//            @Override
-//            public void onSimpleAction() {
-//                Intent takePhotoIntent = new Intent(activity, PhotoTakeActivity.class);
-//                startActivity(takePhotoIntent);
-//            }
-//        }));
-//
-//
-//
-//        actions.add(new MySimpleAction.ShowPhoto(new SimpleAction.OnSimpleActionListener() {
-//            @Override
-//            public void onSimpleAction() {
-//                Intent showPhotoIntent = new Intent(activity, PhotoShowActivity.class);
-//                startActivity(showPhotoIntent);
-//            }
-//        }));
-
-
         TapiaRobotManager manager = TapiaRobot.getManager(this);
         actions.add(new Rotate(new Rotate.OnRotateListener() {
             @Override
@@ -137,8 +118,6 @@ public class TalkActivity extends TapiaActivity {
                 manager.rotate(orientation, degree, null);
             }
         }));
-
-
     }
 
 
@@ -214,6 +193,4 @@ public class TalkActivity extends TapiaActivity {
         super.onPause();
         tapiaAnimation.stopAnimation();
     }
-
-
 }
