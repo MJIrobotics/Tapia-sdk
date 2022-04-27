@@ -21,6 +21,7 @@ import com.tapia.mji.tapialib.Utils.TapiaAnimation;
 import com.tapia.mji.tapialib.Utils.TapiaCalendar;
 import com.tapia.mji.tapialib.Utils.TapiaResources;
 import com.tapia.mji.tapialib.Utils.TapiaRobot;
+import com.tapia.mji.tapialib.Utils.TapiaRobotManager;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -113,10 +114,10 @@ public class TalkActivity extends TapiaActivity {
 //        }));
 
 
-
+        TapiaRobotManager manager = TapiaRobot.getManager(this);
         actions.add(new Rotate(new Rotate.OnRotateListener() {
             @Override
-            public void onRotate(TapiaRobot.RotateOrientation orientation, int degree) {
+            public void onRotate(TapiaRobotManager.Direction orientation, int degree) {
                 String speech = getString(R.string.rotate_sentence0);
                 String direction;
                 switch (orientation){
@@ -141,7 +142,7 @@ public class TalkActivity extends TapiaActivity {
                 } catch (LanguageNotSupportedException e) {
                     e.printStackTrace();
                 }
-                TapiaRobot.rotate(activity, orientation, degree,null);
+                manager.rotate(orientation, degree, null);
             }
         }));
 

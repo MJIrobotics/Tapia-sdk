@@ -1,5 +1,7 @@
 package com.tapia.mji.demo.Providers;
 
+import static com.tapia.mji.demo.Actions.MyAction.MyActionType.GIVE_TIME;
+
 import android.content.Context;
 
 import com.tapia.mji.demo.Actions.MyAction;
@@ -10,13 +12,11 @@ import com.tapia.mji.tapialib.Actions.Action;
 import com.tapia.mji.tapialib.Languages.Language;
 import com.tapia.mji.tapialib.Providers.Interfaces.OfflineNLUProvider;
 import com.tapia.mji.tapialib.Utils.LevenshteinDistance;
-import com.tapia.mji.tapialib.Utils.TapiaRobot;
+import com.tapia.mji.tapialib.Utils.TapiaRobotManager;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-
-import static com.tapia.mji.demo.Actions.MyAction.MyActionType.GIVE_TIME;
 
 /**
  * Created by Sami on 07-Jul-16.
@@ -60,7 +60,7 @@ public class Local_NLU implements OfflineNLUProvider {
             myKeywords.add(new Keyword(new String[]{"何時"}, MyAction.MyActionType.GIVE_TIME));
             myKeywords.add(new Keyword(new String[]{"何曜日"}, MyAction.MyActionType.GIVE_DATE));
             myKeywords.add(new Keyword(new String[]{"何日"}, MyAction.MyActionType.GIVE_DATE));
-            myKeywords.add(new Keyword(new String[]{"回転", "度"}, MyAction.MyActionType.ROTATE));
+            myKeywords.add(new Keyword(new String[]{"回転", "°"}, MyAction.MyActionType.ROTATE));
 
         }
     }
@@ -88,13 +88,13 @@ public class Local_NLU implements OfflineNLUProvider {
                             if(rotate != null) {
                                 for (String sentence : sentences) {
                                     if (sentence.contains(context.getString(R.string.direction_left0)))
-                                        rotate.setOrientation(TapiaRobot.RotateOrientation.LEFT);
+                                        rotate.setOrientation(TapiaRobotManager.Direction.LEFT);
                                     else if(sentence.contains(context.getString(R.string.direction_right0)))
-                                        rotate.setOrientation(TapiaRobot.RotateOrientation.RIGHT);
+                                        rotate.setOrientation(TapiaRobotManager.Direction.RIGHT);
                                     else if(sentence.contains(context.getString(R.string.direction_up0)))
-                                        rotate.setOrientation(TapiaRobot.RotateOrientation.UP);
+                                        rotate.setOrientation(TapiaRobotManager.Direction.UP);
                                     else if(sentence.contains(context.getString(R.string.direction_down0)))
-                                        rotate.setOrientation(TapiaRobot.RotateOrientation.DOWN);
+                                        rotate.setOrientation(TapiaRobotManager.Direction.DOWN);
                                 }
                                 int degrees = -1;
                                 for (String sentence : sentences) {

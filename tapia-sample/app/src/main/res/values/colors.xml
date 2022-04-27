@@ -6,11 +6,14 @@
     <color name="background">#000000</color>
     <color name="yellow">#ffe400</color>
     <color name="blue">#00a2ff</color>
+    <color name="red">#ff1f3f</color>
     <color name="gray">#c9c9c9</color>
     <color name="white">#c4d9ff</color>
     <color name="transparent">#00000000</color>
     <color name="setting_blue">#3894ff</color>
     <color name="setting_blue_selected">#5ab6ff</color>
+    <color name="image_tint_white">#ffffff</color>
 
+    <color name="gray_dark">#777777</color>
     <color name="text_color">#ffffff</color>
 </resources>

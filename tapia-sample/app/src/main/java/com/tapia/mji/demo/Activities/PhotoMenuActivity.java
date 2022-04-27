@@ -17,6 +17,7 @@ public class PhotoMenuActivity extends MenuActivity {
     static final int TAKE_PHOTO = 0;
     static final int SHOW_PHOTO = 1;
     static final int KeyBoard = 4;
+    static final int ROTATION = 5;
 
     @Override
     public ArrayList<MenuItem> setMenuList() {
@@ -27,6 +28,7 @@ public class PhotoMenuActivity extends MenuActivity {
         //Can also adjust the size of the text to make it fit in the bubble
         menuItems.add(new MenuItem(SHOW_PHOTO, "show my photo", 16));
         menuItems.add(new MenuItem(KeyBoard, "KeyBoard", 16));//<<追加します。
+        menuItems.add(new MenuItem(ROTATION, "Rotation", 40));
         return menuItems;
     }
 
@@ -48,7 +50,9 @@ public class PhotoMenuActivity extends MenuActivity {
             case KeyBoard:
                 startActivity(new Intent(TapiaApp.getAppContext(),TestJapaneseKeyBoard.class));//<<追加します。
                 break;
-
+            case ROTATION:
+                startActivity(new Intent(TapiaApp.getAppContext(), RotationActivity.class));
+                break;
         }
     }
 

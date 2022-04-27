@@ -86,7 +86,7 @@
     <string name="alarm_remind0">xxxx</string>
     <string name="general_save0">xxxx</string>
     <string name="general_seeyou0">xxxx</string>
-    <string name="givedate_sentence0">xxxx</string>
+    <string name="givedate_sentence0">今日は %s です</string>
     <string name="password_enter0">xxxx</string>
     <string name="password_error0">xxxx</string>
     <string name="photo_ask_delete0">写真を削除したいですか？</string>
@@ -94,7 +94,7 @@
     <string name="photo_delete0">写真を削除しました。</string>
     <string name="photo_delete_complete0">キャンセルしました。</string>
     <string name="photo_error_delete0">エラが発生しました。写真を削除できなったんです。</string>
-    <string name="rotate_sentence0">xxxx</string>
+    <string name="rotate_sentence0">%s に回転します</string>
     <string name="register_agreement_wait">%d秒待ってください</string>>
     <string name="register_agreement_agree">同意します</string>>
     <string name="register_agreement_disagree">同意しません</string>>
