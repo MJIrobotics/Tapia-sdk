@@ -59,10 +59,10 @@ public class PhotoShowActivity extends TapiaActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_showphoto);
-        local = (ImageButton) findViewById(R.id.localButton);
-        sdcard = (ImageButton) findViewById(R.id.sdcardButton);
-        home = (ImageButton) findViewById(R.id.homeButton);
-        photoList = (ListView) findViewById(android.R.id.list);
+        local = findViewById(R.id.localButton);
+        sdcard = findViewById(R.id.sdcardButton);
+        home = findViewById(R.id.homeButton);
+        photoList = findViewById(android.R.id.list);
 //        dirPath = CameraHelper.PICTURE_FOLDER;
         dirPathThumbnail = CameraHelper.SMALL_PICTURE_FOLDER;
         loadPictures(dirPathThumbnail);
