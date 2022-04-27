@@ -87,23 +87,20 @@ public class PhotoShowAdapter extends BaseAdapter {
                 myItem.picturesView[i].setBackgroundResource(R.drawable.button_image);
                 myItem.picturesView[i].setScaleType(ImageView.ScaleType.FIT_XY);
                 myItem.picturesView[i].setPadding(5, 5, 5, 5);
-                myItem.picturesView[i].setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        FragmentTransaction ft = activity.getFragmentManager().beginTransaction();
-                        Fragment prev = activity.getFragmentManager().findFragmentByTag("dialog");
-                        if (prev != null) {
-                            ft.remove(prev);
-                        }
-                        ft.addToBackStack(null);
-                        // Create and show the dialog.
-                        DialogFragment newFragment = new PhotoFragment();
-                        Bundle args = new Bundle();
-                        args.putString("photoPath", myItem.pictureNames[index]);
-                        newFragment.setArguments(args);
-                        newFragment.setShowsDialog(true);
-                        newFragment.show(ft, "dialog");
+                myItem.picturesView[i].setOnClickListener(v -> {
+                    FragmentTransaction ft = activity.getFragmentManager().beginTransaction();
+                    Fragment prev = activity.getFragmentManager().findFragmentByTag("dialog");
+                    if (prev != null) {
+                        ft.remove(prev);
                     }
+                    ft.addToBackStack(null);
+                    // Create and show the dialog.
+                    DialogFragment newFragment = new PhotoFragment();
+                    Bundle args = new Bundle();
+                    args.putString("photoPath", myItem.pictureNames[index]);
+                    newFragment.setArguments(args);
+                    newFragment.setShowsDialog(true);
+                    newFragment.show(ft, "dialog");
                 });
                 holder.content_ll.addView(myItem.picturesView[i]);
             } else {
@@ -122,12 +119,9 @@ public class PhotoShowAdapter extends BaseAdapter {
 
     public void refresh(final List<PhotoShowActivity.PhotoListItem> photoItemList) {
         Handler refresh = new Handler(Looper.getMainLooper());
-        refresh.post(new Runnable() {
-            @Override
-            public void run() {
-                photoList = photoItemList;
-                notifyDataSetChanged();
-            }
+        refresh.post(() -> {
+            photoList = photoItemList;
+            notifyDataSetChanged();
         });
     }
 }

@@ -10,7 +10,6 @@ import com.tapia.mji.demo.R;
 import com.tapia.mji.tapialib.Actions.Action;
 import com.tapia.mji.tapialib.Activities.TapiaActivity;
 import com.tapia.mji.tapialib.Exceptions.LanguageNotSupportedException;
-import com.tapia.mji.tapialib.Providers.Interfaces.TTSProvider;
 import com.tapia.mji.tapialib.TapiaApp;
 import com.tapia.mji.tapialib.Utils.CameraHelper;
 
@@ -45,55 +44,42 @@ public class PhotoTakeActivity extends TapiaActivity {
         actionListRepeat = new ArrayList<>();
 
 
-        findViewById(R.id.yes).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                findViewById(R.id.yes).setVisibility(View.INVISIBLE);
-                findViewById(R.id.no).setVisibility(View.INVISIBLE);
-                if (mode == SAVE_MODE) {
-                    CameraHelper.saveLastPicture();
-                    try {
-                        ttsProvider.say(getString(R.string.photo_dont_understand_repeat0));
-                    } catch (LanguageNotSupportedException e) {
-                        e.printStackTrace();
-                    }
-                    ttsProvider.setOnSpeechCompleteListener(new TTSProvider.OnSpeechCompleteListener() {
-                        @Override
-                        public void onSpeechComplete() {
-                            mode = REPEAT_MODE;
-                            findViewById(R.id.yes).setVisibility(View.VISIBLE);
-                            findViewById(R.id.no).setVisibility(View.VISIBLE);
-                            ttsProvider.setOnSpeechCompleteListener(null);
-                        }
-                    });
-                } else if (mode == REPEAT_MODE) {
-                    recreate();
+        findViewById(R.id.yes).setOnClickListener(v -> {
+            findViewById(R.id.yes).setVisibility(View.INVISIBLE);
+            findViewById(R.id.no).setVisibility(View.INVISIBLE);
+            if (mode == SAVE_MODE) {
+                CameraHelper.saveLastPicture();
+                try {
+                    ttsProvider.say(getString(R.string.photo_dont_understand_repeat0));
+                } catch (LanguageNotSupportedException e) {
+                    e.printStackTrace();
                 }
+                ttsProvider.setOnSpeechCompleteListener(() -> {
+                    mode = REPEAT_MODE;
+                    findViewById(R.id.yes).setVisibility(View.VISIBLE);
+                    findViewById(R.id.no).setVisibility(View.VISIBLE);
+                    ttsProvider.setOnSpeechCompleteListener(null);
+                });
+            } else if (mode == REPEAT_MODE) {
+                recreate();
             }
         });
-        findViewById(R.id.no).setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                findViewById(R.id.yes).setVisibility(View.INVISIBLE);
-                findViewById(R.id.no).setVisibility(View.INVISIBLE);
-                if (mode == SAVE_MODE) {
-                    try {
-                        ttsProvider.say(getString(R.string.photo_ask_repeat0));
-                    } catch (LanguageNotSupportedException e) {
-                        e.printStackTrace();
-                    }
-                    ttsProvider.setOnSpeechCompleteListener(new TTSProvider.OnSpeechCompleteListener() {
-                        @Override
-                        public void onSpeechComplete() {
-                            mode = REPEAT_MODE;
-                            findViewById(R.id.yes).setVisibility(View.VISIBLE);
-                            findViewById(R.id.no).setVisibility(View.VISIBLE);
-                        }
-                    });
-                } else if (mode == REPEAT_MODE) {
-                    finish();
+        findViewById(R.id.no).setOnClickListener(v -> {
+            findViewById(R.id.yes).setVisibility(View.INVISIBLE);
+            findViewById(R.id.no).setVisibility(View.INVISIBLE);
+            if (mode == SAVE_MODE) {
+                try {
+                    ttsProvider.say(getString(R.string.photo_ask_repeat0));
+                } catch (LanguageNotSupportedException e) {
+                    e.printStackTrace();
                 }
+                ttsProvider.setOnSpeechCompleteListener(() -> {
+                    mode = REPEAT_MODE;
+                    findViewById(R.id.yes).setVisibility(View.VISIBLE);
+                    findViewById(R.id.no).setVisibility(View.VISIBLE);
+                });
+            } else if (mode == REPEAT_MODE) {
+                finish();
             }
         });
 
@@ -105,80 +91,59 @@ public class PhotoTakeActivity extends TapiaActivity {
         } catch (LanguageNotSupportedException e) {
             e.printStackTrace();
         }
-        ttsProvider.setOnSpeechCompleteListener(new TTSProvider.OnSpeechCompleteListener() {
-            @Override
-            public void onSpeechComplete() {
-                sayDelayed(getString(R.string.photo_three0), 1000);
-                changedDrawableDalayed(R.drawable.take3, 1000);
-                sayDelayed(getString(R.string.photo_two0), 2000);
-                changedDrawableDalayed(R.drawable.take2, 2000);
-                sayDelayed(getString(R.string.photo_one0), 3000);
-                changedDrawableDalayed(R.drawable.take1, 3000);
+        ttsProvider.setOnSpeechCompleteListener(() -> {
+            sayDelayed(getString(R.string.photo_three0), 1000);
+            changedDrawableDalayed(R.drawable.take3, 1000);
+            sayDelayed(getString(R.string.photo_two0), 2000);
+            changedDrawableDalayed(R.drawable.take2, 2000);
+            sayDelayed(getString(R.string.photo_one0), 3000);
+            changedDrawableDalayed(R.drawable.take1, 3000);
 
-                mHandler.postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
+            mHandler.postDelayed(() -> {
+                try {
+                    ttsProvider.say(getString(R.string.photo_cheese0));
+                } catch (LanguageNotSupportedException e) {
+                    e.printStackTrace();
+                }
+                ttsProvider.setOnSpeechCompleteListener(() -> {
+                    countdownView.setVisibility(View.GONE);
+                    //take picture
+                    CameraHelper.setOnPictureTokenListener((data, errorMsg) -> {
                         try {
-                            ttsProvider.say(getString(R.string.photo_cheese0));
+                            ttsProvider.say(getString(R.string.photo_ask_save0));
                         } catch (LanguageNotSupportedException e) {
                             e.printStackTrace();
                         }
-                        ttsProvider.setOnSpeechCompleteListener(new TTSProvider.OnSpeechCompleteListener() {
-                            @Override
-                            public void onSpeechComplete() {
-                                countdownView.setVisibility(View.GONE);
-                                //take picture
-                                CameraHelper.setOnPictureTokenListener(new CameraHelper.OnPictureTokenListener() {
-                                    @Override
-                                    public void onPictureToken(byte[] data, String errorMsg) {
-                                        try {
-                                            ttsProvider.say(getString(R.string.photo_ask_save0));
-                                        } catch (LanguageNotSupportedException e) {
-                                            e.printStackTrace();
-                                        }
-                                        ttsProvider.setOnSpeechCompleteListener(new TTSProvider.OnSpeechCompleteListener() {
-                                            @Override
-                                            public void onSpeechComplete() {
-                                                ttsProvider.setOnSpeechCompleteListener(null);
-                                                mode = SAVE_MODE;
-                                                findViewById(R.id.yes).setVisibility(View.VISIBLE);
-                                                findViewById(R.id.no).setVisibility(View.VISIBLE);
-                                            }
-                                        });
-
-                                    }
-                                });
-                                CameraHelper.takePicture();
-                            }
+                        ttsProvider.setOnSpeechCompleteListener(() -> {
+                            ttsProvider.setOnSpeechCompleteListener(null);
+                            mode = SAVE_MODE;
+                            findViewById(R.id.yes).setVisibility(View.VISIBLE);
+                            findViewById(R.id.no).setVisibility(View.VISIBLE);
                         });
-                    }
-                }, 4000);
-                ttsProvider.setOnSpeechCompleteListener(null);
-            }
+
+                    });
+                    CameraHelper.takePicture();
+                });
+            }, 4000);
+            ttsProvider.setOnSpeechCompleteListener(null);
         });
     }
 
 
     void sayDelayed(final String speech, int delay) {
-        mHandler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    ttsProvider.say(speech);
-                } catch (LanguageNotSupportedException e) {
-                    e.printStackTrace();
-                }
+        mHandler.postDelayed(() -> {
+            try {
+                ttsProvider.say(speech);
+            } catch (LanguageNotSupportedException e) {
+                e.printStackTrace();
             }
         }, delay);
     }
 
     void changedDrawableDalayed(final int drawableID, int delay) {
-        mHandler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                countdownView.setImageResource(drawableID);
-                countdownView.invalidate();
-            }
+        mHandler.postDelayed(() -> {
+            countdownView.setImageResource(drawableID);
+            countdownView.invalidate();
         }, delay);
     }
 }

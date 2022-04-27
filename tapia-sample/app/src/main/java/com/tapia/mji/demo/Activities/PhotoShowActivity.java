@@ -2,7 +2,6 @@ package com.tapia.mji.demo.Activities;
 
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -79,31 +78,20 @@ public class PhotoShowActivity extends TapiaActivity {
         ttsProvider = TapiaApp.currentLanguage.getTTSProvider();
         offlineNLUProvider = TapiaApp.currentLanguage.getOfflineNLUProvider();
 
-        home.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
+        home.setOnClickListener(v -> finish());
+        sdcard.setOnClickListener(v -> {
+            sdcard.setSelected(true);
+            local.setSelected(false);
+            dirPathThumbnail = "/storage/sdcard1/";//set to the sdcard path
+            loadPictures(dirPathThumbnail);
+            photoAdapter.refresh(curPhotoList);
         });
-        sdcard.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                sdcard.setSelected(true);
-                local.setSelected(false);
-                dirPathThumbnail = "/storage/sdcard1/";//set to the sdcard path
-                loadPictures(dirPathThumbnail);
-                photoAdapter.refresh(curPhotoList);
-            }
-        });
-        local.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                local.setSelected(true);
-                sdcard.setSelected(false);
-                dirPathThumbnail = CameraHelper.SMALL_PICTURE_FOLDER;
-                loadPictures(dirPathThumbnail);
-                photoAdapter.refresh(curPhotoList);
-            }
+        local.setOnClickListener(v -> {
+            local.setSelected(true);
+            sdcard.setSelected(false);
+            dirPathThumbnail = CameraHelper.SMALL_PICTURE_FOLDER;
+            loadPictures(dirPathThumbnail);
+            photoAdapter.refresh(curPhotoList);
         });
 
     }

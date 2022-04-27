@@ -101,20 +101,17 @@ public class Google implements GeocodeProvider {
 //                }
 //            });
 
-            TapiaNetwork.getJson("http://ipapi.co/json", new TapiaNetwork.OnJSONListener() {
-                @Override
-                public void onJSON(JSONObject jsonObject) {
-                    Address myAddress = new Address(Locale.ENGLISH);
-                    try {
+            TapiaNetwork.getJson("http://ipapi.co/json", jsonObject -> {
+                Address myAddress = new Address(Locale.ENGLISH);
+                try {
 //                        myAddress.setCountryName(jsonObject.getString("country"));
-                        myAddress.setCountryCode(jsonObject.getString("country"));
-                        myAddress.setLatitude(jsonObject.getDouble("latitude"));
-                        myAddress.setLongitude(jsonObject.getDouble("longitude"));
-                        myAddress.setAdminArea(jsonObject.getString("city"));
-                        geocodeListener.onLocationFinished(myAddress);
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
+                    myAddress.setCountryCode(jsonObject.getString("country"));
+                    myAddress.setLatitude(jsonObject.getDouble("latitude"));
+                    myAddress.setLongitude(jsonObject.getDouble("longitude"));
+                    myAddress.setAdminArea(jsonObject.getString("city"));
+                    geocodeListener.onLocationFinished(myAddress);
+                } catch (JSONException e) {
+                    e.printStackTrace();
                 }
             });
 //            loc = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
@@ -146,25 +143,22 @@ public class Google implements GeocodeProvider {
     @Override
     public void getCityLocation(String cityStr, final GeocodeListener geocodeListener) {
         Address cityLocation = null;
-        TapiaNetwork.getJson("https://maps.googleapis.com/maps/api/geocode/json?&address=" + cityStr.replace(" ", "%20"), new TapiaNetwork.OnJSONListener() {
-            @Override
-            public void onJSON(JSONObject jsonObject) {
-                try {
-                    if (jsonObject.getString("status").equals("OK")) {
-                        Address cityAddress = new Address(Locale.ENGLISH);
-                        JSONArray results = jsonObject.getJSONArray("results");
-                        JSONObject firstResult = results.getJSONObject(0);
-                        JSONObject location = firstResult.getJSONObject("geometry").getJSONObject("location");
-                        cityAddress.setLongitude(location.getDouble("lng"));
-                        cityAddress.setLatitude(location.getDouble("lat"));
-                        geocodeListener.onLocationFinished(cityAddress);
-                    } else {
-                        //error
-                        geocodeListener.onLocationFinished(null);
-                    }
-                } catch (JSONException e) {
-                    e.printStackTrace();
+        TapiaNetwork.getJson("https://maps.googleapis.com/maps/api/geocode/json?&address=" + cityStr.replace(" ", "%20"), jsonObject -> {
+            try {
+                if (jsonObject.getString("status").equals("OK")) {
+                    Address cityAddress = new Address(Locale.ENGLISH);
+                    JSONArray results = jsonObject.getJSONArray("results");
+                    JSONObject firstResult = results.getJSONObject(0);
+                    JSONObject location = firstResult.getJSONObject("geometry").getJSONObject("location");
+                    cityAddress.setLongitude(location.getDouble("lng"));
+                    cityAddress.setLatitude(location.getDouble("lat"));
+                    geocodeListener.onLocationFinished(cityAddress);
+                } else {
+                    //error
+                    geocodeListener.onLocationFinished(null);
                 }
+            } catch (JSONException e) {
+                e.printStackTrace();
             }
         });
 //        try {

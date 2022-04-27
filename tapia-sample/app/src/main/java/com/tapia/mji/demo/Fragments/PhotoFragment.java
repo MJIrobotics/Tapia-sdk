@@ -85,35 +85,20 @@ public class PhotoFragment extends DialogFragment {
         myDialog.getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE, WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE);
 
 
-        back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                getDialog().dismiss();
-            }
-        });
+        back.setOnClickListener(v -> getDialog().dismiss());
 
-        qrcode.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (!isBusy) {
-                    params.put("filename", photoName);
-                    encodeImagetoString();
-                    loadingBar.setVisibility(View.VISIBLE);
-                }
+        qrcode.setOnClickListener(v -> {
+            if (!isBusy) {
+                params.put("filename", photoName);
+                encodeImagetoString();
+                loadingBar.setVisibility(View.VISIBLE);
             }
         });
 
 
-        home.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                getDialog().dismiss();
-            }
-        });
-        delete.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(final View v) {
-                v.setEnabled(false);
+        home.setOnClickListener(v -> getDialog().dismiss());
+        delete.setOnClickListener(v -> {
+            v.setEnabled(false);
 //                final List<Action> actionList = new ArrayList<>();
 //                actionList.add(new SimpleAction.PositiveAnswer(new PositiveAnswer.OnSimpleActionListener() {
 //                    @Override
@@ -144,11 +129,11 @@ public class PhotoFragment extends DialogFragment {
 //                    }
 //                }));
 
-                try {
-                    photoShowActivity.ttsProvider.say(photoShowActivity.getString(R.string.photo_ask_delete0));
-                } catch (LanguageNotSupportedException e) {
-                    e.printStackTrace();
-                }
+            try {
+                photoShowActivity.ttsProvider.say(photoShowActivity.getString(R.string.photo_ask_delete0));
+            } catch (LanguageNotSupportedException e) {
+                e.printStackTrace();
+            }
 //                photoShowActivity.sttProvider.setOnRecognitionCompleteListener(new STTProvider.OnRecognitionCompleteListener() {
 //                    @Override
 //                    public void onRecognitionComplete(List<String> results) {
@@ -163,7 +148,6 @@ public class PhotoFragment extends DialogFragment {
 //                        });
 //                    }
 //                });
-            }
         });
         Limage.setImageDrawable(photoShowActivity.findImageView(photoPath));
 

@@ -69,68 +69,65 @@ public class Local_NLU implements OfflineNLUProvider {
 
     @Override
     public void analyseText(final List<String> sentences, final List<Action> actionToListen) {
-        new Runnable() {
-            @Override
-            public void run() {
+        ((Runnable) () -> {
 
-                ArrayList<Keyword> listToAnalyse = new ArrayList<Keyword>();
-                for (Action act : actionToListen) {
-                    for (Keyword keyword : myKeywords) {
-                        if (keyword.actionType == act.getType()) {
-                            listToAnalyse.add(keyword);
-                        }
+            ArrayList<Keyword> listToAnalyse = new ArrayList<Keyword>();
+            for (Action act : actionToListen) {
+                for (Keyword keyword : myKeywords) {
+                    if (keyword.actionType == act.getType()) {
+                        listToAnalyse.add(keyword);
                     }
-                }
-                Keyword keywordGroup = getSimpleBestKeywordsGroup(listToAnalyse, sentences);
-                Action resultAction = null;
-                if (keywordGroup != null) {
-                    switch ((MyAction.MyActionType) keywordGroup.actionType) {
-                        case ROTATE:
-                            Rotate rotate = (Rotate) Action.queryAction(actionToListen, MyAction.MyActionType.ROTATE);
-                            if (rotate != null) {
-                                for (String sentence : sentences) {
-                                    if (sentence.contains(context.getString(R.string.direction_left0)))
-                                        rotate.setOrientation(TapiaRobotManager.Direction.LEFT);
-                                    else if (sentence.contains(context.getString(R.string.direction_right0)))
-                                        rotate.setOrientation(TapiaRobotManager.Direction.RIGHT);
-                                    else if (sentence.contains(context.getString(R.string.direction_up0)))
-                                        rotate.setOrientation(TapiaRobotManager.Direction.UP);
-                                    else if (sentence.contains(context.getString(R.string.direction_down0)))
-                                        rotate.setOrientation(TapiaRobotManager.Direction.DOWN);
-                                }
-                                int degrees = -1;
-                                for (String sentence : sentences) {
-                                    try {
-                                        if (language.equals(Language.LanguageID.JAPANESE)) {
-                                            sentence = Japanese.convertFullWidthNumberToHalfWidthNumber(sentence);
-                                        }
-
-                                        degrees = Integer.parseInt(sentence.replaceAll("[\\D]", ""));
-                                        rotate.setDegree(degrees);
-                                        break;
-                                    } catch (Exception e) {
-                                        degrees = -1;
-                                    }
-                                }
-                                if (degrees != -1)
-                                    resultAction = rotate;
-                                else
-                                    resultAction = null;
-                            }
-                            break;
-                        default:
-                            resultAction = Action.queryAction(actionToListen, keywordGroup.actionType);
-                            break;
-                    }
-                }
-                if (resultAction != null) {
-                    resultAction.onAction();
-                }
-                if (onAnalyseCompleteListener != null) {
-                    onAnalyseCompleteListener.OnAnalyseComplete(resultAction);
                 }
             }
-        }.run();
+            Keyword keywordGroup = getSimpleBestKeywordsGroup(listToAnalyse, sentences);
+            Action resultAction = null;
+            if (keywordGroup != null) {
+                switch ((MyAction.MyActionType) keywordGroup.actionType) {
+                    case ROTATE:
+                        Rotate rotate = (Rotate) Action.queryAction(actionToListen, MyAction.MyActionType.ROTATE);
+                        if (rotate != null) {
+                            for (String sentence : sentences) {
+                                if (sentence.contains(context.getString(R.string.direction_left0)))
+                                    rotate.setOrientation(TapiaRobotManager.Direction.LEFT);
+                                else if (sentence.contains(context.getString(R.string.direction_right0)))
+                                    rotate.setOrientation(TapiaRobotManager.Direction.RIGHT);
+                                else if (sentence.contains(context.getString(R.string.direction_up0)))
+                                    rotate.setOrientation(TapiaRobotManager.Direction.UP);
+                                else if (sentence.contains(context.getString(R.string.direction_down0)))
+                                    rotate.setOrientation(TapiaRobotManager.Direction.DOWN);
+                            }
+                            int degrees = -1;
+                            for (String sentence : sentences) {
+                                try {
+                                    if (language.equals(Language.LanguageID.JAPANESE)) {
+                                        sentence = Japanese.convertFullWidthNumberToHalfWidthNumber(sentence);
+                                    }
+
+                                    degrees = Integer.parseInt(sentence.replaceAll("[\\D]", ""));
+                                    rotate.setDegree(degrees);
+                                    break;
+                                } catch (Exception e) {
+                                    degrees = -1;
+                                }
+                            }
+                            if (degrees != -1)
+                                resultAction = rotate;
+                            else
+                                resultAction = null;
+                        }
+                        break;
+                    default:
+                        resultAction = Action.queryAction(actionToListen, keywordGroup.actionType);
+                        break;
+                }
+            }
+            if (resultAction != null) {
+                resultAction.onAction();
+            }
+            if (onAnalyseCompleteListener != null) {
+                onAnalyseCompleteListener.OnAnalyseComplete(resultAction);
+            }
+        }).run();
     }
 
     @Override
