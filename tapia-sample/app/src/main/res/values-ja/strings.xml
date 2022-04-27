@@ -1,163 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="service_hello0">はい！何でしょうか？</string>
-    <string name="alarm_good_morning0">おはよう</string>
-    <string name="alarm_good_night0">おやすみ</string>
-    <string name="weather_todayStr0">今日</string>
-    <string name="weather_tomorrowStr0">明日</string>
-    <string name="volumedown_sentence0">音量を1レベル下げました. なにか他にご用件がありますか</string>
-    <string name="weather_aftertomorrowStr0">明後日</string>
-    <string name="weather_error">申し訳ありませんが、ネットワーク接続の問題。もう一度やり直してください。</string>
-    <string name="weather_good1">%sは快晴の一日です</string>
-    <string name="weather_cloud0">%sは雲の多い一日でしょう。</string>
-    <string name="weather_good2">%sはとても気持ちいい天気です</string>
-    <string name="weather_hot1">%sは非常に暑い一日です。熱中症に十分ご注意を。</string>
-    <string name="weather_cold0">%sは 寒い一日となるでしょう。暖かい恰好でお過ごしください。</string>
-    <string name="weather_hot0">%sはとても暑くなりそうです。水分補給を忘れずに、十分ご注意を。</string>
-    <string name="weather_good0">%sはとてもいい天気ですね</string>
-    <string name="weather_rain0">%sは雨が降るでしょう。足元にご注意を。</string>
-    <string name="weather_rain1">%sは雨が降るでしょう。足元にご注意を。</string>
-    <string name="weather_rain2">%sは雨が降るでしょう。足元にご注意を。</string>
-    <string name="weather_snow0">%sには雪が降るでしょう。足元にご注意を。</string>
-    <string name="weather_snow1">%sには雪が降るでしょう。暖かい恰好でお過ごしください。</string>
-    <string name="weather_temperature_speech0" formatted="false">最高気温%.0f度、最低気温%.0f度です</string>
-    <string name="weather_temperature_display" formatted="false">\t最高気温"%.0f°\n\t最低気温%.0f°</string>
-    <string name="volumeup_sentence0">音量を1レベルあげました. なにか他にご用件がありますか</string>
-    <string name="service_offerHelp1">なにかご用ですか</string>
-    <string name="service_offerHelp0">なにかご用ですか</string>
+    <!-- Take photo  -->
     <string name="photo_ready0">私を見てください！写真を撮りますよー！</string>
     <string name="photo_three0">三</string>
     <string name="photo_two0">二</string>
     <string name="photo_one0">一</string>
     <string name="photo_cheese0">はいちーず！</string>
     <string name="photo_dont_understand_repeat0">保存しました。もう一度写真を撮りますか？</string>
-    <string name="photo_dont_understand_save0">なんとおっしゃったかわかりませんでした。 こちらの写真でよろしいですか？</string>
     <string name="photo_ask_save0">こちらの写真でよろしいですか？</string>
-    <string name="givetime_sentence0" formatted="false">現在の時刻は%s時%s分です。</string>
+    <string name="photo_ask_delete0">写真を削除したいですか？</string>
+    <string name="photo_ask_repeat0">もう一枚写真を取りたいですか？</string>
+
+    <!-- Talk & command   -->
+    <string name="service_hello0">はい！何でしょうか？</string>
+    <string name="service_offerHelp1">なにかご用ですか</string>
+    <string name="service_offerHelp0">なにかご用ですか</string>
     <string name="general_dont_understand0">もう一度！</string>
-    <string name="general_dont_understand1">うーん？なになに？</string>
-    <string name="general_dont_understand2">えーっと、なぁに？</string>
+    <string name="givedate_sentence0">今日は %s です</string>
+    <string name="givetime_sentence0" formatted="false">現在の時刻は%s時%s分です。</string>
+    <string name="rotate_sentence0">%s に回転します</string>
     <string name="direction_up0">上</string>
     <string name="direction_right0">右</string>
     <string name="direction_left0">左</string>
     <string name="direction_down0">下</string>
-    <string name="calendar_monday">月曜日</string>
-    <string name="calendar_tuesday">火曜日</string>
-    <string name="calendar_wednesday">水曜日</string>
-    <string name="calendar_thursday">木曜日</string>
-    <string name="calendar_sunday">日曜日</string>
-    <string name="calendar_saturday">土曜日</string>
-    <string name="calendar_friday">金曜日</string>
-    <string name="calendar_january">1月</string>
-    <string name="calendar_february">2月</string>
-    <string name="calendar_march">3月</string>
-    <string name="calendar_april">4月</string>
-    <string name="calendar_mai">5月</string>
-    <string name="calendar_june">6月</string>
-    <string name="calendar_july">7月</string>
-    <string name="calendar_september">9月</string>
-    <string name="calendar_october">10月</string>
-    <string name="calendar_august">8月</string>
-    <string name="calendar_november">11月</string>
-    <string name="calendar_december">12月</string>
-    <string name="news_ask_news_type0">何の種類のニュースをききますか？</string>
-    <string name="volumemax_sentence0">今最大の音量です。なにか他にご用件がありますか</string>
-    <string name="volumemin_sentence0">今最小の音量です。なにか他にご用件がありますか</string>
-    <string name="volumemax_reached0">今最大の音量です。なにか他にご用件がありますか</string>
-    <string name="volumemin_reached0">今最小の音量です。なにか他にご用件がありますか</string>
-    <string name="language_title">言語設定</string>
-    <string name="music_local_play">再生</string>
-    <string name="music_local_error_no_file">音楽ファイルなし</string>
-    <string name="music_local_error_no_file0">音楽ファイルが見当たりません。SDカードにはフォルダを作らずにmpスリー形式の音楽ファイルを直接入れてください。</string>
-    <string name="music_local_select0">聞きたい音楽を選択してください。</string>
-    <string name="news_title0" formatted="false">今日の%sニュースのタイトル　　%s。 このニュースの詳細を聞きますか？</string>
-    <string name="news_ask_next0">次のニュースをききますか？</string>
-    <string name="news_dont_understand_detail0">もう一度お願いします。 このニュースの詳細を聞きますか？</string>
-    <string name="news_dont_understand_next0">次のニュースをききますか？</string>
-    <string name="news_ask_detail">もう一度お願いします。 このニュースの詳細を聞きますか？</string>
-    <string name="news_dont_understand_type0">何の種類のニュースをききますか？</string>
-    <string name="news_finish0">xxxx</string>
-    <string name="news_say_detail">これは詳細なニュースです%s。もう一度、同じニュースを読みますか？それとも、次のニュースを読みますか？</string>
-    <string name="music_start_play0">再生します。</string>
-    <string name="music_player_dont_understand0">よく聞き取れませんでした、もう一度お願いします。</string>
-    <string name="music_player_dont_understand1">もう一度お願いします。</string>
-    <string name="music_player_dont_understand2">なんとおっしゃったかわかりませんでした。</string>
-    <string name="music_player_pause_sentence0">はい、なんでしょうか。</string>
-    <string name="alarm_remind0">xxxx</string>
-    <string name="general_save0">xxxx</string>
-    <string name="general_seeyou0">xxxx</string>
-    <string name="givedate_sentence0">今日は %s です</string>
-    <string name="password_enter0">xxxx</string>
-    <string name="password_error0">xxxx</string>
-    <string name="photo_ask_delete0">写真を削除したいですか？</string>
-    <string name="photo_ask_repeat0">もう一枚写真を取りたいですか？</string>
-    <string name="photo_delete0">写真を削除しました。</string>
-    <string name="photo_delete_complete0">キャンセルしました。</string>
-    <string name="photo_error_delete0">エラが発生しました。写真を削除できなったんです。</string>
-    <string name="rotate_sentence0">%s に回転します</string>
-    <string name="register_agreement_wait">%d秒待ってください</string>>
-    <string name="register_agreement_agree">同意します</string>>
-    <string name="register_agreement_disagree">同意しません</string>>
-    <string name="register_agreement_content">コミュニケーションロボット「タピア」\n コミュニケーションサービス利用規約\n \n
-        「コミュニケーションロボットタピア利用規約（以下「本規約」といいます)とは、株式会社ＭＪＩ（以下「当社」といいます)が提供するコミュニケーションロボットタピア(以下「タピア」といいます)のコミュニケーションサービス（以下「本サービス」）をお客様に利用頂くための条件を定めるものです。\n \n
-        本規約の最後に同意を表していただくことで利用が開始できます。\n \n
-        第1条　機能の内容\n お客様は、本規約に同意頂いた上で、当社指定の設定を行って頂くことにより、以下の本サービスを利用頂くことができます。なお、本規約に同意頂けない場合には、本サービスを利用いただけません。\n
-        （1）	お客様がタピアに話しかけた音声データを当社指定の音声認識サービス提供業者のサーバーに送信し、認識した結果に基づき、タピアと会話を行ったり、タピア搭載の各機能の実行を促したりする機能\n
-        （2）	お客様がタピアに話しかけた対話データを当社のサーバーに送信し、認識した結果に基づき、タピアと会話を行ったり、タピア搭載の各機能の実行を促したりする機能。\n
-        （3）	その他、前項に付随するサービス。\n \n 第2条　利用手続き\n 本サービスを利用頂くためには、お客様は本規約内容をご確認の上、本規約最後に同意を表して頂く必要があります。\n \n
-        第3条　責任等\n 本サービスを利用するために必要なインターネット回線等の不具合により、本サービスの利用が不可能となったとしても、当社は一切責任を負いません。\n \n
-        第4条　海外での利用\n 本サービスは海外でご利用頂けません。\n \n
-        第5条　お客様の情報の取扱いについて\n
-        1.　当社は、音声データを当社の指定する音声認識サービス提供業者のサーバーにおいて蓄積させ、音声認識精度の向上および対話マッチング精度の向上のため利用することがあります。なお、本規約に基づく利用情報の取扱いにあたって、個人が特定・識別されることはございません。\n
-        2.　当社は、タピアの対話データを、当社のサーバーにおいて蓄積させ、対話マッチング精度の向上のために利用することがあります。なお、本規約に基づく利用情報の取扱いにあたって、個人が特定・識別されることはございません。\n
-        3.　当社は、お客様のタピア利用状況の把握、および広告・宣伝活動等のため、前項に記載のデータを第三者に開示、提供、もしくは公表する場合があります。\n
-        4.	当社は、法令または官公庁の要請に基づく場合に、タピアの対話データを第三者に開示、提供もしくは公表する場合があります。\n \n
-        第6条　禁止事項\n お客様は、本サービスの利用において以下の行為をしてはならないものとします。また、当社はお客様が利用に際して以下の行為を行い、または行うおそれがあると判断した場合、本サービスの利用停止その他適切な措置を講じることができます。\n
-        （1）	本規約に違反する行為\n
-        （2）	法令または公序良俗に反する行為、またはそのおそれのある行為\n
-        （3）	当社または第三者に損害を与える行為、またはそのおそれのある行為\n
-        （4）	当社の活動を妨げる行為、当社または第三者の信頼を毀損する行為、もしくは、そのおそれのある行為\n
-        （5）	当社または第三者のタピアの本サービス利用に支障を与える行為、または与える恐れのある行為\n
-        （6）	本サービスを改変し、またはリバースエンジニアリング、逆コンパイル、逆アセンブル等すること\n
-        （7）	本サービスの利用を通じて提供される情報を改ざんする行為、または提供側の事前の同意なく第三者に開示する行為\n
-        （8）	本サービス利用に関連する権利及義務の全部または一部を第三者に譲渡・貸与する行為またはそれに準ずる行為\n
-        （9）	当社または第三者の著作権その他の知的財産権を侵害する行為または侵害するおそれのある行為\n
-        （10）	政治活動・宗教活動・犯罪行為またはそれらにつながる行為\n
-        （11）	前各号に準ずる行為\n （12）	その他、当社が不適切と判断する行為\n \n
-        第7条　利用上の制限\n
-        1.	当社は、以下の各号に該当する場合、お客様に事前に通知することなく、本サービスの全部または一部の提供を一時的に中断または停止することがあります。\n
-        （1）	本サービスの機能に係るシステムの保守・点検を行う場合\n
-        （2）	火災・停電等の事故、地震・洪水等の天災、戦争、暴動、第三者との紛争等により、本サービスの提供が出来なくなった場合\n
-        （3）	本サービスに係るシステムの障害等により、本サービスの提供ができなくなった場合\n
-        （4）	当社が運用上または技術上やむを得ず本サービスの提供の一時中断が必要であると判断した場合\n
-        2.	当社は前項により、お客様または第三者に損害が生じたとしても、当該損害について一切の責任を負いません。\n
-        3.	当社は、本サービスのバージョンアップを行う場合があります。本サービスのバージョンアップを行うまでの間、本サービスの全部または一部が利用できなくなる場合があります。\n \n
-        第8条　変更、追加、廃止\n
-        1.	当社は、業務上の都合により、お客様に事前に通知することなく、本サービスの全部または一部を変更、追加または廃止することがあります。\n
-        2.	本サービスの全部または一部の変更、追加または廃止がお客様に重大な影響を及ぼすと当社が判断した場合は、当社はその変更、追加または廃止の内容を当社が適当と判断する方法によりお客様に周知するものとします。なお当社は、本サービスの全部または一部の変更、追加または廃止によりお客様に損害が生じたとしても、当該損害について一切の責任を負いません。\n \n 第9条　責任の制限\n
-        1.	お客様による誤った利用、管理不十分、または第三者による不正使用等の当社の責に帰さない事由におり、お客様または第三者が損害を被った場合、当社は当該損害に関して一切責任を負いません。\n
-        2.	当社は、お客様が本サービスを通じて得た情報等につき、その正確性および特定の目的への適合性等について、いかなる保証もいたしません。また、これらの情報等によりお客様または第三者が損害を被った場合、当社は当該損害に対して一切責任を負いません。\n
-        3.	当社は、本サービスが第三者の知的財産権およびその他の権利を侵害していない事、本サービスが正常に動作することをなんら保障するものではなく、お客様その他の第三者が本サービスに関連して直接的または間接的に被ったいかなる損害についても責任を負いません。\n
-        4.	本サービスは、当社が指定するサーバーに接続を行います。当社が指定するサーバーで提供される情報の完全性・有用性・正確性などについて、当社は一切責任を負いません。\n
-        5.	当社は、本サービスに瑕疵が発見された場合、当社ホームページに掲載し、またはその他当社が適当と認める方法により、お客様に対し瑕疵のある旨を周知または通知するとともに、瑕疵のない本サービスを提供するか、または当該サービスの瑕疵を補修すべく努めますが、その実現を保証するものではありません。\n
-        6.	前各号にかかわらす当社に帰責事由がある場合には、当社は損害賠償責任を負います。ただし、当社に故意または重過失がある場合を除き、社会通念上、債務不履行または不法行為から通常発生するものと考えられる損害を超える損害については責任を負わないものとします。\n \n
-        第10条　知的財産権\n
-        本サービスに係る知的財産権は、当社または第三者に帰属します。本規約によるお客様への本サービスの提供は、お客様に対する何らかの権利移転等を意味するものではありません。\n \n
-        第11条　権利義務等の譲渡等の禁止\n お客様は、理由の如何を問わず、本規約上の地位の移転、本サービス提供を受ける権利等本規約及びこれに付帯する一切の契約に基づいて発生するすべての権利義務の譲渡または質権設定その他の担保提供を行う事は出来ないものとします。\n \n
-        第12条　損害賠償\n
-        当社は、お客様の故意もしくは過失、本規約違反、または不正もしくは違法な本サービスの利用により当社が損害を被った場合の損害の賠償をお客様に請求することができるものとします。\n \n
-        第13条　本規約の適用・変更\n
-        当社は、必要と判断した場合には、お客様に通知することなく随時本規約を変更することがあります。\n \n 第14条　準拠法\n 本利用規約に関する準拠法は、全て日本国の法令が適用されるものとします。\n \n
-        第15条　管轄裁判所\n 本規約または本サービスの利用に関して生じた紛争については、東京地方裁判所を第一審の専属的合意管轄裁判所とします。\n \n </string>
-    <string name="register_agreement_disagree_senrtence0">ご利用規約にご同意いただけない場合、タピアをご利用になれません。</string>
-    <string name="register_language_next">持続する</string>
-    <string name="register_start_sentence0">はじめまして！私の名前はタピアです。タピアと呼んでください。これから、ネットワークの設定と、オーナー登録をしますよ。いくつか質問をするので、私の目の下が水色に光っているときに答えてください。それではスタート！</string>
-    <string name="weather_location0">xxxx</string>
-    <string name="weather_todayStr1">xxxx</string>
-    <string name="bp_dont_understand0">xxxx</string>
-    <string name="weather_aftertomorrowStr1">xxxx</string>
-    <string name="weather_weekdayStr1">xxxx</string>
-    <string name="weather_weekdayStr0">xxxx</string>
-    <string name="weather_tomorrowStr1">xxxx</string>
-    >
 </resources>
