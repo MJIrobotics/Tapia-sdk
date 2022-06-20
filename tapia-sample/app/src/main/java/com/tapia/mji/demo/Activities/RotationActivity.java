@@ -51,7 +51,21 @@ public class RotationActivity extends TapiaActivity {
 
         locationValue = findViewById(R.id.tv_location);
         robotManager = TapiaRobot.getManager(this);
+        checkCurrentLocation(null);
+    }
+
+    private void checkCurrentLocation(CheckLocationCallback callback) {
+        robotManager.setOnPositionChangeListener(i -> {
+            robotManager.setOnPositionChangeListener(null);
+            if (callback != null) {
+                callback.onChecked();
+            }
+        });
         robotManager.requestUpdateLocationPosition();
+    }
+
+    interface CheckLocationCallback {
+        void onChecked();
     }
 
     private void onUpButtonClicked() {
@@ -71,7 +85,9 @@ public class RotationActivity extends TapiaActivity {
     }
 
     private void onFrontButtonClicked() {
-        robotManager.rotate(TapiaRobotManager.Direction.LEFT, robotManager.getCurrentPosition(), null);
+        checkCurrentLocation(() -> {
+            robotManager.rotate(TapiaRobotManager.Direction.LEFT, robotManager.getCurrentPosition(), null);
+        });
     }
 
     private void onLocationButtonClicked() {
@@ -79,7 +95,7 @@ public class RotationActivity extends TapiaActivity {
             isOnSoundLocation = true;
 
             locationButton.setBackground(getDrawable(R.drawable.bg_circle_red));
-            robotManager.requestUpdateLocationPosition();
+
             robotManager.setOnSoundLocationListener(degree -> {
 
                 // degree from default position.
