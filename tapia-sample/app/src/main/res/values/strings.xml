@@ -13,6 +13,8 @@
     <string name="photo_dont_understand_repeat0">This photo has been saved. Do you want to take one more photo?</string>
     <string name="photo_ask_repeat0">Do you want to take one more photo?</string>
     <string name="photo_ask_delete0">Do you really want to delete this photo?</string>
+    <string name="delete">Delete</string>
+    <string name="cancel">Cancel</string>
 
     <!-- Talk & command   -->
     <string name="service_hello0">hello</string>

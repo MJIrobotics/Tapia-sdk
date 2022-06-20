@@ -35,6 +35,9 @@ public class PhotoFragment extends DialogFragment {
     String photoName = null;
     File imgFile = null;
 
+
+    PhotoDialogListener listener;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,11 +45,13 @@ public class PhotoFragment extends DialogFragment {
         setStyle(DialogFragment.STYLE_NO_FRAME, android.R.style.Theme_Material);
     }
 
+    String photoPath = "";
+
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         TapiaActivity.configWindow(getActivity());
         Bundle args = getArguments();
-        final String photoPath = args.getString("photoPath");
+        photoPath = args.getString("photoPath");
         View view = LayoutInflater.from(getActivity()).inflate(R.layout.fragment_photo, null);
 
         Limage = view.findViewById(R.id.photo);
@@ -65,6 +70,18 @@ public class PhotoFragment extends DialogFragment {
         delete.setOnClickListener(v -> {
             v.setEnabled(false);
             try {
+                photoShowActivity.ttsProvider.setOnSpeechCompleteListener(() -> {
+                    photoShowActivity.ttsProvider.setOnSpeechCompleteListener(null);
+                    final AlertDialog dialog = new AlertDialog.Builder(getActivity())
+                            .setMessage(R.string.photo_ask_delete0)
+                            .setPositiveButton(R.string.delete, (dialog1, which) -> {
+                                dialog1.dismiss();
+                                myDialog.dismiss();
+                                deleteImage();
+                            })
+                            .setNegativeButton(R.string.cancel, (dialog1, which) -> dialog1.dismiss()).create();
+                    dialog.show();
+                });
                 photoShowActivity.ttsProvider
                         .say(photoShowActivity.getString(R.string.photo_ask_delete0));
             } catch (LanguageNotSupportedException e) {
@@ -86,6 +103,13 @@ public class PhotoFragment extends DialogFragment {
         return myDialog;
     }
 
+    void deleteImage() {
+        new File(photoPath).delete();
+        if (listener != null) {
+            listener.onDeleted();
+        }
+    }
+
 
     @Override
     public void onStart() {
@@ -98,5 +122,13 @@ public class PhotoFragment extends DialogFragment {
         lp.width = 1150;
         lp.height = 700;
         getDialog().getWindow().setAttributes(lp);
+    }
+
+    public void setListener(PhotoDialogListener listener) {
+        this.listener = listener;
+    }
+
+    public interface PhotoDialogListener {
+        void onDeleted();
     }
 }

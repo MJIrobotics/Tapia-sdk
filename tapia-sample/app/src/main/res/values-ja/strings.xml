@@ -10,7 +10,8 @@
     <string name="photo_ask_save0">こちらの写真でよろしいですか？</string>
     <string name="photo_ask_delete0">写真を削除したいですか？</string>
     <string name="photo_ask_repeat0">もう一枚写真を取りたいですか？</string>
-
+    <string name="delete">削除</string>
+    <string name="cancel">キャンセル</string>
     <!-- Talk & command   -->
     <string name="service_hello0">はい！何でしょうか？</string>
     <string name="service_offerHelp1">なにかご用ですか</string>

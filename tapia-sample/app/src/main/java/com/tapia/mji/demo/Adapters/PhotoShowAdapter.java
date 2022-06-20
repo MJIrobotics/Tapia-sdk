@@ -81,6 +81,7 @@ public class PhotoShowAdapter extends BaseAdapter {
                     Bitmap myBitmap = BitmapFactory.decodeFile(imgFile.getAbsolutePath());
                     myItem.picturesView[i].setImageBitmap(myBitmap);
                 }
+                final int targetIndex = i;
                 myItem.picturesView[i].setLayoutParams(new LinearLayout.LayoutParams(0, 250, 1f));
                 myItem.picturesView[i].setBackgroundResource(R.drawable.button_image);
                 myItem.picturesView[i].setScaleType(ImageView.ScaleType.FIT_XY);
@@ -98,6 +99,10 @@ public class PhotoShowAdapter extends BaseAdapter {
                     args.putString("photoPath", myItem.pictureNames[index]);
                     newFragment.setArguments(args);
                     newFragment.setShowsDialog(true);
+                    ((PhotoFragment) newFragment).setListener(() -> {
+                        photoList.remove(targetIndex);
+                        refresh(photoList);
+                    });
                     newFragment.show(ft, "dialog");
                 });
                 holder.content_ll.addView(myItem.picturesView[i]);
