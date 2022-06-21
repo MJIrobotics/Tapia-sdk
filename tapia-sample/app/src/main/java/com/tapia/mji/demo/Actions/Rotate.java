@@ -4,13 +4,13 @@ import com.tapia.mji.tapialib.Utils.TapiaRobotManager;
 
 /**
  * MyAction extension for rotating tapia.
- *
+ * <p>
  * Created by Sami on 12-Jul-16.
  */
 public class Rotate extends MyAction {
     public OnRotateListener onRotateListener;
 
-    public Rotate(OnRotateListener rotateListener){
+    public Rotate(OnRotateListener rotateListener) {
         super(rotateListener);
         onRotateListener = rotateListener;
         type = MyActionType.ROTATE;
@@ -21,7 +21,7 @@ public class Rotate extends MyAction {
      *
      * @param degree the degree of rotation
      */
-    public void setDegree(int degree){
+    public void setDegree(int degree) {
         onRotateListener.degree = degree;
     }
 

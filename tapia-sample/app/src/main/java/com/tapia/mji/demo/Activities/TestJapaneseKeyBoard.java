@@ -18,7 +18,7 @@ public class TestJapaneseKeyBoard extends JapaneseKeyboardActivity {
         super.onCreate(savedInstanceState);
         sharedPreferences = getSharedPreferences("data", MODE_PRIVATE);
         String registerName = sharedPreferences.getString("name", null);
-        if(registerName != null) {
+        if (registerName != null) {
             setText(registerName);//画面へ表示
         }
     }

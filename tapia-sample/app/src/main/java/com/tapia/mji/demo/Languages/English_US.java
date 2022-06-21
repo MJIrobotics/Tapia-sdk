@@ -5,7 +5,6 @@ import android.content.res.Configuration;
 import com.tapia.mji.demo.Providers.Local_NLU;
 import com.tapia.mji.demo.R;
 import com.tapia.mji.tapialib.Providers.DosmonoOnlineSTTProvider;
-import com.tapia.mji.tapialib.Providers.Fuetrek;
 import com.tapia.mji.tapialib.Providers.Hoya;
 import com.tapia.mji.tapialib.TapiaApp;
 import com.tapia.mji.tapialib.Utils.TapiaCalendar;
@@ -22,18 +21,18 @@ import java.util.Locale;
 public class English_US extends MyLanguage {
 
 
-    public English_US(){
+    public English_US() {
         Locale jaLocale = new Locale("en");
         Locale.setDefault(jaLocale);
         configuration = new Configuration(TapiaApp.getAppContext().getResources().getConfiguration());
-        configuration.locale =jaLocale;
+        configuration.locale = jaLocale;
 
-        onlineNLUProvider          = null;
-        offlineNLUProvider         = Local_NLU.class;
-        onlineSTTProvider          = DosmonoOnlineSTTProvider.class;
-        offLineSTTProvider         = null;
-        ttsProvider                = Hoya.class;
-        geocodeProvider            = null;
+        onlineNLUProvider = null;
+        offlineNLUProvider = Local_NLU.class;
+        onlineSTTProvider = DosmonoOnlineSTTProvider.class;
+        offLineSTTProvider = null;
+        ttsProvider = Hoya.class;
+        geocodeProvider = null;
 
     }
 
@@ -42,10 +41,10 @@ public class English_US extends MyLanguage {
         GregorianCalendar gregorianCalendar = new GregorianCalendar();
         gregorianCalendar.setTime(date);
 
-        return gregorianCalendar.get(Calendar.YEAR)+"year"
-                + TapiaCalendar.getStrMonth(TapiaApp.getAppContext(),gregorianCalendar.get(Calendar.MONTH))
-                + gregorianCalendar.get(Calendar.DAY_OF_MONTH)+"day"
-                + TapiaCalendar.getStrDay(TapiaApp.getAppContext(),gregorianCalendar.get(Calendar.DAY_OF_WEEK))
+        return gregorianCalendar.get(Calendar.YEAR) + "year"
+                + TapiaCalendar.getStrMonth(TapiaApp.getAppContext(), gregorianCalendar.get(Calendar.MONTH))
+                + gregorianCalendar.get(Calendar.DAY_OF_MONTH) + "day"
+                + TapiaCalendar.getStrDay(TapiaApp.getAppContext(), gregorianCalendar.get(Calendar.DAY_OF_WEEK))
                 ;
     }
 
