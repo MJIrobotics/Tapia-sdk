@@ -24,4 +24,5 @@
     <string name="direction_right0">右</string>
     <string name="direction_left0">左</string>
     <string name="direction_down0">下</string>
+    <string name="push_power_button">Pushed power button</string>
 </resources>

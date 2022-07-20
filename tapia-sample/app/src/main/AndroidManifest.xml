@@ -64,6 +64,10 @@
             android:configChanges="locale"
             android:screenOrientation="landscape"
             android:name=".Activities.RotationActivity" />
+        <activity
+            android:configChanges="locale"
+            android:screenOrientation="landscape"
+            android:name=".Activities.ControlActivity" />
 
         <meta-data
             android:name="license_key"

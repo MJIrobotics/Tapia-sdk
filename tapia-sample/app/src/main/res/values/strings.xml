@@ -28,4 +28,5 @@
     <string name="direction_right0">right</string>
     <string name="direction_up0">up</string>
     <string name="direction_down0">down</string>
+    <string name="push_power_button">Pushed power button</string>
 </resources>
