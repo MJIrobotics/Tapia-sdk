@@ -12,6 +12,7 @@ import com.tapia.mji.tapialib.Utils.TapiaRobot;
 import com.tapia.mji.tapialib.Utils.TapiaRobotManager;
 
 public class RotationActivity extends TapiaActivity {
+    public static int DEFAULT_POSITION = 15;
 
     ImageButton home;
     View upButton;
@@ -50,12 +51,12 @@ public class RotationActivity extends TapiaActivity {
         locationButton.setOnClickListener(v -> onLocationButtonClicked());
 
         locationValue = findViewById(R.id.tv_location);
-        robotManager = TapiaRobot.getManager(this);
+        robotManager = TapiaRobot.getManager(getApplicationContext());
         checkCurrentLocation(null);
     }
 
     private void checkCurrentLocation(CheckLocationCallback callback) {
-        robotManager.setOnPositionChangeListener(i -> {
+        robotManager.setOnPositionChangeListener((i, orientation) -> {
             robotManager.setOnPositionChangeListener(null);
             if (callback != null) {
                 callback.onChecked();
@@ -69,11 +70,11 @@ public class RotationActivity extends TapiaActivity {
     }
 
     private void onUpButtonClicked() {
-        robotManager.rotate(TapiaRobotManager.Direction.UP, 50, null);
+        robotManager.rotate(TapiaRobotManager.Direction.UP, 10, null);
     }
 
     private void onDownButtonClicked() {
-        robotManager.rotate(TapiaRobotManager.Direction.DOWN, 50, null);
+        robotManager.rotate(TapiaRobotManager.Direction.DOWN, 10, null);
     }
 
     private void onRightButtonClicked() {
@@ -86,7 +87,15 @@ public class RotationActivity extends TapiaActivity {
 
     private void onFrontButtonClicked() {
         checkCurrentLocation(() -> {
-            robotManager.rotate(TapiaRobotManager.Direction.LEFT, robotManager.getCurrentPosition(), null);
+            robotManager.rotate(TapiaRobotManager.Direction.LEFT, robotManager.getCurrentLRPosition(), () -> {
+                int udPosition = robotManager.getCurrentUDPosition();
+                if (udPosition > DEFAULT_POSITION) {
+                    robotManager.rotate(TapiaRobotManager.Direction.DOWN, robotManager.getCurrentUDPosition() - DEFAULT_POSITION, null);
+                } else {
+                    robotManager.rotate(TapiaRobotManager.Direction.UP, DEFAULT_POSITION - robotManager.getCurrentUDPosition(), null);
+                }
+
+            });
         });
     }
 
