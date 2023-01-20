@@ -60,6 +60,7 @@
         <activity android:configChanges="locale" android:screenOrientation="landscape" android:name=".Activities.PhotoMenuActivity"  android:exported="false" />
         <activity android:configChanges="locale" android:screenOrientation="landscape" android:name=".Activities.TalkActivity" android:exported="false" />
         <activity android:configChanges="locale" android:screenOrientation="landscape" android:name=".Activities.TestJapaneseKeyBoard" android:exported="false" />
+        <activity android:configChanges="locale" android:screenOrientation="landscape" android:name=".Activities.AnimationActivity" android:exported="false" />
         <activity
             android:configChanges="locale"
             android:screenOrientation="landscape"
