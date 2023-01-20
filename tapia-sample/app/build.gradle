@@ -1,12 +1,12 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 28
+    compileSdkVersion 33
     buildToolsVersion '25.0.0'
     defaultConfig {
         applicationId "com.tapia.mji.demo"
-        minSdkVersion 21
-        targetSdkVersion 28
+        minSdkVersion 22
+        targetSdkVersion 33
         versionCode 49
         versionName "4.24"
         ndk {
@@ -37,10 +37,11 @@ android {
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     testCompile 'junit:junit:4.12'
-    compile 'com.android.support:appcompat-v7:23.0.0'
+    compile 'androidx.appcompat:appcompat:1.6.0'
+    compile 'androidx.constraintlayout:constraintlayout:2.1.4'
+
     compile 'com.github.kenglxn.QRGen:android:2.1.0'
     compile 'com.loopj.android:android-async-http:1.4.9'
-    compile 'com.android.support.constraint:constraint-layout:2.0.4'
     compile 'org.apache.directory.studio:org.apache.commons.io:2.4'
-    compile 'com.tapia.mji:tapialib:2.2.0'
+    compile 'com.tapia.mji:tapialib:2.3.0'
 }
