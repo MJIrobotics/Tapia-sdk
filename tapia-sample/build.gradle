@@ -6,8 +6,8 @@ buildscript {
         google()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.6.3'
-        classpath "org.jfrog.buildinfo:build-info-extractor-gradle:4.0.1"
+        classpath 'com.android.tools.build:gradle:4.2.2'
+        classpath "org.jfrog.buildinfo:build-info-extractor-gradle:4.26.1"
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
     }
@@ -23,9 +23,10 @@ allprojects {
             dirs 'libs'
         }
         maven { url 'https://csspeechstorage.blob.core.windows.net/maven/' }
-        maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
-        maven { url 'http://maven.aliyun.com/nexus/content/repositories/jcenter' }
+        maven { url 'https://maven.aliyun.com/nexus/content/groups/public/' }
+        maven { url 'https://maven.aliyun.com/nexus/content/repositories/jcenter' }
         maven {
+            allowInsecureProtocol(true)
             url "http://tos.mjirobotics.co.jp:8081/artifactory/tapia-sdk"
             credentials {
                 username = "${sdk_username}"

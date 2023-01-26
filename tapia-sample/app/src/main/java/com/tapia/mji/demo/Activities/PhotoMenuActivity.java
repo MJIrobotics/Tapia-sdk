@@ -19,6 +19,7 @@ public class PhotoMenuActivity extends MenuActivity {
     static final int KEY_BOARD = 4;
     static final int ROTATION = 5;
     static final int CONTROL = 6;
+    static final int ANIMATION = 7;
 
     @Override
     public ArrayList<MenuItem> setMenuList() {
@@ -30,7 +31,7 @@ public class PhotoMenuActivity extends MenuActivity {
         menuItems.add(new MenuItem(SHOW_PHOTO, "Show \nmy photo", 40));
         menuItems.add(new MenuItem(KEY_BOARD, "Keyboard", 40));//<<追加します。
         menuItems.add(new MenuItem(ROTATION, "Rotation", 40));
-        menuItems.add(new MenuItem(CONTROL, "Control", 40));
+        menuItems.add(new MenuItem(ANIMATION, "Animation", 40));
         return menuItems;
     }
 
@@ -57,6 +58,9 @@ public class PhotoMenuActivity extends MenuActivity {
                 break;
             case CONTROL:
                 startActivity(new Intent(TapiaApp.getAppContext(), ControlActivity.class));
+                break;
+            case ANIMATION:
+                startActivity(new Intent(TapiaApp.getAppContext(), AnimationActivity.class));
                 break;
         }
     }
